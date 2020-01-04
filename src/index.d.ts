@@ -1,4 +1,4 @@
-declare namespace NeoCajax {
+declare module '@keimeno/neocajax' {
 	class NeoCajaxRequest {
 		xhr: XMLHttpRequest;
 		method: string;
