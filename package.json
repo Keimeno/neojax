@@ -1,7 +1,7 @@
 {
 	"name": "@keimeno/neocajax",
-	"version": "1.0.1",
-	"description": "CajaxJS is an lightweight JS Http client for everyone! (Promise support) ",
+	"version": "1.0.2",
+	"description": "NeoCajax is an lightweight JS Http client for everyone! (Promise support) ",
 	"main": "./dist/main.js",
 	"types": "./src/index.d.ts",
 	"scripts": {

@@ -1,68 +1,88 @@
 declare module '@keimeno/neocajax' {
-	class NeoCajaxRequest {
+	abstract class NeoCajaxRequest {
 		xhr: XMLHttpRequest;
 		method: string;
 		contenttype: string;
 		data: object | string;
 
-		contstructor(
+		abstract contstructor(
 			url: string,
 			method: string,
-			data: object | string = null,
-			options: object = null
+			data?: object | string,
+			options?: object
 		): void;
 
-		response(func: void): XMLHttpRequest | NeoCajaxRequest;
-		then(func: void): XMLHttpRequest | NeoCajaxRequest;
-		catch(func: void): XMLHttpRequest | NeoCajaxRequest;
-		custom(func: void): XMLHttpRequest | NeoCajaxRequest;
-		send(func: void): NeoCajaxRequest;
+		abstract response(func: void): XMLHttpRequest | NeoCajaxRequest;
+		abstract then(func: void): XMLHttpRequest | NeoCajaxRequest;
+		abstract catch(func: void): XMLHttpRequest | NeoCajaxRequest;
+		abstract custom(func: void): XMLHttpRequest | NeoCajaxRequest;
+		abstract send(func: void): NeoCajaxRequest;
 	}
 
-	function NeoPrajaxPromise(): Promise<NeoCajaxRequest>;
+	abstract class NeoPrajaxPromise {
+		xhr: XMLHttpRequest;
+		method: string;
+		contenttype: string;
+		data: object | string;
+
+		abstract contstructor(
+			url: string,
+			method: string,
+			data?: object | string,
+			options?: object
+		): void;
+
+		abstract response(
+			func: void
+		): Promise<XMLHttpRequest | NeoCajaxRequest>;
+		abstract then(func: void): Promise<XMLHttpRequest | NeoCajaxRequest>;
+		abstract catch(func: void): Promise<XMLHttpRequest | NeoCajaxRequest>;
+		abstract custom(func: void): Promise<XMLHttpRequest | NeoCajaxRequest>;
+		abstract send(func: void): Promise<NeoCajaxRequest>;
+	}
 
 	export class NeoCajax {
 		public static post(
 			url: string,
-			data: object | string = {},
-			options: object = {},
-			usinginput: boolean = false
+			data?: object | string,
+			options?: object,
+			usinginput?: boolean
 		): NeoCajaxRequest;
 		public static get(
 			url: string,
-			data: object | string = {},
-			options: object = {},
-			usinginput: boolean = false
+			data?: object | string,
+			options?: object,
+			usinginput?: boolean
 		): NeoCajaxRequest;
 		public static put(
 			url: string,
-			data: object | string = {},
-			options: object = {},
-			usinginput: boolean = false
+			data?: object | string,
+			options?: object,
+			usinginput?: boolean
 		): NeoCajaxRequest;
 		public static delete(
 			url: string,
-			data: object | string = {},
-			options: object = {},
-			usinginput: boolean = false
+			data?: object | string,
+			options?: object,
+			usinginput?: boolean
 		): NeoCajaxRequest;
 		public static trace(
 			url: string,
-			data: object | string = {},
-			options: object = {},
-			usinginput: boolean = false
+			data?: object | string,
+			options?: object,
+			usinginput?: boolean
 		): NeoCajaxRequest;
 		public static connect(
 			url: string,
-			data: object | string = {},
-			options: object = {},
-			usinginput: boolean = false
+			data?: object | string,
+			options?: object,
+			usinginput?: boolean
 		): NeoCajaxRequest;
 		public static options(
 			url: string,
-			data: object | string = {},
-			options: object = {},
-			usinginput: boolean = false
+			data?: object | string,
+			options?: object,
+			usinginput?: boolean
 		): NeoCajaxRequest;
 		public static ajax(json: object): NeoCajaxRequest;
 	}
@@ -70,45 +90,45 @@ declare module '@keimeno/neocajax' {
 	export class NeoPrajax {
 		public static post(
 			url: string,
-			data: object | string = {},
-			options: object = {},
-			usinginput: boolean = false
+			data?: object | string,
+			options?: object,
+			usinginput?: boolean
 		): NeoPrajaxPromise;
 		public static get(
 			url: string,
-			data: object | string = {},
-			options: object = {},
-			usinginput: boolean = false
+			data?: object | string,
+			options?: object,
+			usinginput?: boolean
 		): NeoPrajaxPromise;
 		public static put(
 			url: string,
-			data: object | string = {},
-			options: object = {},
-			usinginput: boolean = false
+			data?: object | string,
+			options?: object,
+			usinginput?: boolean
 		): NeoPrajaxPromise;
 		public static delete(
 			url: string,
-			data: object | string = {},
-			options: object = {},
-			usinginput: boolean = false
+			data?: object | string,
+			options?: object,
+			usinginput?: boolean
 		): NeoPrajaxPromise;
 		public static trace(
 			url: string,
-			data: object | string = {},
-			options: object = {},
-			usinginput: boolean = false
+			data?: object | string,
+			options?: object,
+			usinginput?: boolean
 		): NeoPrajaxPromise;
 		public static connect(
 			url: string,
-			data: object | string = {},
-			options: object = {},
-			usinginput: boolean = false
+			data?: object | string,
+			options?: object,
+			usinginput?: boolean
 		): NeoPrajaxPromise;
 		public static options(
 			url: string,
-			data: object | string = {},
-			options: object = {},
-			usinginput: boolean = false
+			data?: object | string,
+			options?: object,
+			usinginput?: boolean
 		): NeoPrajaxPromise;
 		public static ajax(json: object): NeoPrajaxPromise;
 	}
