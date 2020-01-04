@@ -1,8 +1,14 @@
-# NeoCajax (_ClassedAjax_) NeoPrajax (_PromiseAjax_) 2.0
+# NeoCajax (_NewClassedAjax_) | NeoPrajax (_NewPromiseAjax_)
 
-NeoCajaxJS is an lightweight JS Http client for everyone!
+## Side Note
 
-#### NPM
+Original project: [interaapps/cajax](https://github.com/interaapps/cajax)
+
+The project will be rewritten entirely within the next few releases.
+
+## Installation
+
+### npm
 
 ```bash
 npm install @keimeno/neocajax
@@ -26,13 +32,8 @@ NeoCajax.post('/myapi', { information: 'easy to use' })
 Now you can use `await`
 
 ```javascript
-NeoPrajax.post('/myapi', { information: 'easy to use' })
-	.then(data => {
-		console.log(data.responseText);
-	})
-	.catch((data.responseText) => {
-		console.log('Something exploded!: ' + data);
-	});
+const data = await NeoPrajax.post('/myapi', { information: 'easy to use' });
+console.log(data.responseText);
 ```
 
 ### Features
@@ -51,7 +52,7 @@ NeoPrajax.post('/myapi', { information: 'easy to use' })
 
 #### Browser support
 
-**NeoCajax.js** works with every newer browser (Except Internet Explorer)
+**NeoCajax** works with every newer browser (Except Internet Explorer [IE 8 support will come with a future release])
 
 **Babel** You can use Babel to get support for older browser
 
