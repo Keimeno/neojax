@@ -15,5 +15,6 @@
 		"esModuleInterop": true,
 		"allowSyntheticDefaultImports": true,
 		"jsx": "preserve"
-	}
+	},
+	"exclude": ["node_modules", "dist"]
 }
