@@ -1,159 +1,109 @@
-# NeoCajax (_NewClassedAjax_) | NeoPrajax (_NewPromiseAjax_)
+# neocajax v2
 
-## Side Note
+## Description
 
-Original project: [interaapps/cajax](https://github.com/interaapps/cajax)
+neocajax is an extremely lightweight alternative to axios, with native typescript support.
 
-The project will be rewritten entirely within the next few releases.
-
-## Installation
+## Setup
 
 ### npm
 
 ```bash
-npm install @keimeno/neocajax
+npm install neocajax --save
 ```
 
-#### NeoCajax
+### cdn
+
+```html
+<script
+	src="https://cdn.jsdelivr.net/npm/neocajax@latest/dist/neocajax.min.js"
+	type="text/javascript"
+></script>
+```
+
+## Documentation
+
+To import in the module do:
 
 ```javascript
-NeoCajax.post('/myapi', { information: 'easy to use' })
-	.then(data => {
-		console.log(data.responseText);
-	})
-	.catch((data.responseText) => {
-		console.log('Something exploded!: ' + data);
-	})
-	.send();
+import NeoCajax from 'neocajax';
 ```
 
-#### NeoPrajax
+With typescript you can as well import the different types
 
-Now you can use `await`
+```typescript
+import NeoCajax, { NeoCajaxResponse, NeoCajaxError } from 'neocajax';
+```
+
+This will give you a new NeoCajax instance, without any preset options.
+
+If you want to predefine the baseUrl or headers you can create a new instance from this object, with the create() method.
 
 ```javascript
-const data = await NeoPrajax.post('/myapi', { information: 'easy to use' });
-console.log(data.responseText);
+neocajax = NeoCajax.create({
+	baseUrl: 'https://example.org/',
+	headers: {
+		Authorization: 'Bearer mytoken'
+	}
+});
 ```
 
-### Features
+To send out a basic get request, one method to do it, is:
 
--   Many request methods
--   Fully customizable
+```javascript
+NeoCajax.get(url, options)
+	.then(response => {
+		console.log(response.data);
+	})
+	.catch(error => {
+		console.log(error.message);
+		console.log(error.response.data);
+	});
+```
 
-### Request methods
+You can also use async/await, because it returns a Promise.
+
+```javascript
+const response = await NeoCajax.get(url, options);
+```
+
+This works similarly in typescript:
+
+```typescript
+NeoCajax.get(url, options)
+	.then((response: NeoCajaxResponse) => {
+		console.log(response.data);
+	})
+	.catch((error: NeoCajaxError) => {
+		console.log(error.message);
+		console.log(error.message.data);
+	});
+```
+
+And with async/await it looks like the following:
+
+```typescript
+const response: NeoCajaxResponse = await NeoCajax.get(url, options);
+```
+
+A post request looks similar, just with the difference, that you can pass data with it.
+
+```javascript
+const response = await NeoCajax.post(url, data, options);
+```
+
+The supported request types currently are:
 
 -   GET
 -   POST
 -   PUT
 -   DELETE
--   OPTIONS
--   TRACE
 
-#### Browser support
+## Contribute
 
-**NeoCajax** works with every newer browser (Except Internet Explorer [IE 8 support will come with a future release])
+If you want to contribute to this project please make sure to read our guidelines.
 
-**Babel** You can use Babel to get support for older browser
+-   You need to use tabs as indentation.
+-   Explain your changes in the description of your pull request.
 
-#### Simple POST request
-
-```javascript
-NeoCajax.post('/myapi.php', { hello: 'world' })
-	.then(data => {
-		console.log(data.responseText);
-	})
-	.catch(data => {
-		console.log('error' + data.responseText);
-	})
-	.send();
-```
-
-#### Simple GET request (with get parameters)
-
-```javascript
-NeoCajax.get('/myapi.php', { hello: 'world' })
-	.then(data => {
-		console.log(data.responseText);
-	})
-	.catch(data => {
-		console.log('error' + data.responseText);
-	})
-	.send();
-```
-
-#### Simple GET request (without get parameters)
-
-```javascript
-NeoCajax.get('/myapi.php')
-	.then(data => {
-		console.log(data.responseText);
-	})
-	.catch(data => {
-		console.log('error' + data.responseText);
-	})
-	.send();
-```
-
-#### Header
-
-```javascript
-NeoCajax.post('/myapi.php', {}, { header: { myheader: 'HEAD' } })
-	.then(data => {
-		console.log(data.responseText);
-	})
-	.catch(data => {
-		console.log('error' + data.responseText);
-	})
-	.send();
-```
-
-#### XHR Options (Example: withCredentials)
-
-```javascript
-NeoCajax.post("/myapi.php", {}, {withCredentials: true} })
-.then((data)=>{
-    console.log(data.responseText);
-}).catch((data)=>{
-    console.log("error"+data.responseText);
-}).send();
-```
-
-#### Customizable
-
-```javascript
-NeoCajax.get('/myapi.php', { hello: 'world' })
-	.then(data => {
-		console.log(data.responseText);
-	})
-	.catch(data => {
-		console.log('error' + data.responseText);
-	})
-	.custom(xhr => {
-		// You can use all XMLHttpRequest methods
-		xhr.send('custom things');
-	})
-	.send();
-```
-
-#### Own classname
-
-```javascript
-var $ = NeoCajax;
-
-$.get('/myapi')
-	.then(data => {
-		console.log(data.responseText);
-	})
-	.send();
-```
-
-#### Split
-
-```javascript
-var req = NeoCajax.post('example_server.php', { hello: 'world' });
-req.then(data => {
-	console.log(data.responseText);
-});
-req.send();
-```
+Other than that, feel free to support neocajax!
