@@ -101,10 +101,10 @@ class NeoCajax {
 
 		headers = this.parseHeadersToNeoCajaxHeaders(response.headers);
 
-		body = await response.text();
-
-		if ((headers['Content-Type'] || '').match(/.*application\/json.*/)) {
+		try {
 			body = await response.json();
+		} catch (e) {
+			body = await response.text();
 		}
 
 		return {
