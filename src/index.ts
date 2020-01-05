@@ -133,19 +133,26 @@ class NeoCajax {
 		url: string,
 		data: object | null = null,
 		options?: NeoCajaxOptions
-	): Promise<NeoCajaxResponse | NeoCajaxError> {
-		return new Promise(async (resolve, reject) => {
-			const response = await this.sendRequest(url, method, data, options);
+	): Promise<NeoCajaxResponse> {
+		return new Promise<NeoCajaxResponse>(
+			async (resolve: any, reject: any) => {
+				const response = await this.sendRequest(
+					url,
+					method,
+					data,
+					options
+				);
 
-			if (response.success) {
-				resolve(response as NeoCajaxResponse);
-			} else {
-				reject({
-					response: response as NeoCajaxResponse,
-					message: response.message
-				} as NeoCajaxError);
+				if (response.success) {
+					resolve(response);
+				} else {
+					reject({
+						response: response as NeoCajaxResponse,
+						message: response.message
+					});
+				}
 			}
-		});
+		);
 	}
 
 	/**
@@ -171,7 +178,7 @@ class NeoCajax {
 	public get(
 		url: string,
 		options?: NeoCajaxOptions
-	): Promise<NeoCajaxResponse | NeoCajaxError> {
+	): Promise<NeoCajaxResponse> {
 		return this.manageRequest('GET', url, null, options);
 	}
 
@@ -186,7 +193,7 @@ class NeoCajax {
 		url: string,
 		data: object | null = null,
 		options?: NeoCajaxOptions
-	): Promise<NeoCajaxResponse | NeoCajaxError> {
+	): Promise<NeoCajaxResponse> {
 		return this.manageRequest('POST', url, data, options);
 	}
 
@@ -201,7 +208,7 @@ class NeoCajax {
 		url: string,
 		data: object | null = null,
 		options?: NeoCajaxOptions
-	): Promise<NeoCajaxResponse | NeoCajaxError> {
+	): Promise<NeoCajaxResponse> {
 		return this.manageRequest('PUT', url, data, options);
 	}
 
@@ -216,7 +223,7 @@ class NeoCajax {
 		url: string,
 		data: object | null = null,
 		options?: NeoCajaxOptions
-	): Promise<NeoCajaxResponse | NeoCajaxError> {
+	): Promise<NeoCajaxResponse> {
 		return this.manageRequest('DELETE', url, data, options);
 	}
 
