@@ -5,8 +5,8 @@ import NeoCajaxResponse, {
 	NeoCajaxConvolutedResponse
 } from '../types/response.js';
 
-// import nodeFetch api
-import nodeFetch, { RequestInit, Response, Headers } from 'node-fetch';
+// import fetch api
+import 'unfetch/polyfill';
 
 /**
  * NeoCajax class
@@ -86,7 +86,7 @@ class NeoCajax {
 			}
 		}
 
-		const init: RequestInit = {
+		const init: any = {
 			method,
 			headers: {
 				...headers
@@ -97,7 +97,7 @@ class NeoCajax {
 			init.body = JSON.stringify(data);
 		}
 
-		const response: Response = await nodeFetch(finalUrl, init);
+		const response: any = await fetch(finalUrl, init);
 		let body: object | string | number | boolean;
 
 		headers = this.parseHeadersToNeoCajaxHeaders(response.headers);
@@ -155,11 +155,11 @@ class NeoCajax {
 	}
 
 	/**
-	 * Parses nodeFetch headers into useable NeoCajaxHeaders
+	 * Parses fetch headers into useable NeoCajaxHeaders
 	 *
 	 * @param headers
 	 */
-	private parseHeadersToNeoCajaxHeaders(headers: Headers): NeoCajaxHeaders {
+	private parseHeadersToNeoCajaxHeaders(headers: any): NeoCajaxHeaders {
 		let newHeaders: NeoCajaxHeaders = {};
 		headers.forEach((value: string, name: string) => {
 			newHeaders[name] = value;
