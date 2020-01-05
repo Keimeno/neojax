@@ -1,11 +1,12 @@
 {
-	"name": "@keimeno/neocajax",
-	"version": "1.0.2",
-	"description": "NeoCajax is an lightweight JS Http client for everyone! (Promise support) ",
-	"main": "./dist/main.js",
-	"types": "./src/index.d.ts",
+	"name": "neocajax",
+	"version": "2.0.0",
+	"description": "neocajax is an extremely lightweight alternative to axios, with native typescript support.",
+	"main": "./dist/neocajax.min.umd.js",
+	"types": "./types/index.d.ts",
 	"scripts": {
-		"build": "webpack"
+		"build": "webpack",
+		"test": "jest --coverage --verbose --passWithNoTests"
 	},
 	"repository": {
 		"type": "git",
@@ -24,7 +25,19 @@
 	},
 	"homepage": "https://github.com/keimeno/neocajax#readme",
 	"devDependencies": {
+		"@babel/preset-react": "^7.7.4",
+		"@types/jest": "^24.0.25",
+		"awesome-typescript-loader": "^5.2.1",
+		"babel-core": "^6.26.3",
+		"babel-loader": "^8.0.6",
+		"jest": "^24.9.0",
+		"ts-jest": "^24.2.0",
+		"typescript": "^3.7.4",
 		"webpack": "^4.29.0",
 		"webpack-cli": "^3.2.1"
+	},
+	"dependencies": {
+		"@types/node-fetch": "^2.5.4",
+		"node-fetch": "^2.6.0"
 	}
 }
