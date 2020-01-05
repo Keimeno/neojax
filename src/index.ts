@@ -28,7 +28,7 @@ class NeoCajax {
 	 * @param options
 	 */
 	constructor(options?: NeoCajaxOptions) {
-		let headers: NeoCajaxHeaders = {};
+		let headers: NeoCajaxHeaders | undefined = {};
 
 		if (options) {
 			this._options = options;
@@ -67,11 +67,11 @@ class NeoCajax {
 	private async sendRequest(
 		url: string,
 		method: string,
-		data?: object,
+		data: object | null,
 		options?: NeoCajaxOptions
 	): Promise<NeoCajaxConvolutedResponse> {
-		let finalUrl: string;
-		let headers: NeoCajaxHeaders = this._options.headers;
+		let finalUrl: string = '';
+		let headers: NeoCajaxHeaders | undefined = this._options.headers;
 
 		if (this._options.baseUrl) {
 			finalUrl = this._options.baseUrl + url;
@@ -104,9 +104,9 @@ class NeoCajax {
 		const response: Response = await fetch(finalUrl, init);
 		let body: object | string | number | boolean;
 
-		if (
-			response.headers.get('Content-Type').match(/.*application\/json.*/)
-		) {
+		headers = this.parseHeadersToNeoCajaxHeaders(response.headers);
+
+		if ((headers['Content-Type'] || '').match(/.*application\/json.*/)) {
 			body = await response.json();
 		} else {
 			body = await response.text();
@@ -114,7 +114,7 @@ class NeoCajax {
 
 		return {
 			status: response.status,
-			headers: this.parseHeadersToNeoCajaxHeaders(response.headers),
+			headers,
 			url: response.url,
 			success: response.ok,
 			message: response.statusText,
@@ -134,7 +134,7 @@ class NeoCajax {
 	private async manageRequest(
 		method: string,
 		url: string,
-		data: object = null,
+		data: object | null = null,
 		options?: NeoCajaxOptions
 	): Promise<NeoCajaxResponse | NeoCajaxError> {
 		return new Promise(async (resolve, reject) => {
@@ -187,7 +187,7 @@ class NeoCajax {
 	 */
 	public post(
 		url: string,
-		data: object = null,
+		data: object | null = null,
 		options?: NeoCajaxOptions
 	): Promise<NeoCajaxResponse | NeoCajaxError> {
 		return this.manageRequest('POST', url, data, options);
@@ -202,7 +202,7 @@ class NeoCajax {
 	 */
 	public put(
 		url: string,
-		data: object = null,
+		data: object | null = null,
 		options?: NeoCajaxOptions
 	): Promise<NeoCajaxResponse | NeoCajaxError> {
 		return this.manageRequest('PUT', url, data, options);
@@ -217,7 +217,7 @@ class NeoCajax {
 	 */
 	public delete(
 		url: string,
-		data: object = null,
+		data: object | null = null,
 		options?: NeoCajaxOptions
 	): Promise<NeoCajaxResponse | NeoCajaxError> {
 		return this.manageRequest('DELETE', url, data, options);
