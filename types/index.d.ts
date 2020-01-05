@@ -1,5 +1,6 @@
 import NeoCajaxOptions from './options';
 import NeoCajaxError from './error';
+import NeoCajaxHeaders from './headers';
 import NeoCajaxResponse, { NeoCajaxConvolutedResponse } from './response';
 import NeoCajax from '../src/';
 
@@ -8,6 +9,7 @@ declare module '@keimeno/neocajax' {
 		NeoCajaxOptions,
 		NeoCajaxError,
 		NeoCajaxResponse,
+		NeoCajaxHeaders,
 		NeoCajaxConvolutedResponse
 	};
 
