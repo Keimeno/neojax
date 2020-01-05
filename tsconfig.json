@@ -6,6 +6,7 @@
 	"sourceMap": true,
 	"declaration": true,
 	"compilerOptions": {
+		"baseUrl": "./",
 		"strict": true,
 		"target": "ES5",
 		"importHelpers": true,
