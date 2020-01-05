@@ -6,14 +6,15 @@
 	"sourceMap": true,
 	"declaration": true,
 	"compilerOptions": {
+		"baseUrl": "./",
 		"strict": true,
 		"target": "ES5",
-		"resolveJsonModule": true,
 		"importHelpers": true,
 		"moduleResolution": "node",
 		"experimentalDecorators": true,
 		"esModuleInterop": true,
 		"allowSyntheticDefaultImports": true,
 		"jsx": "preserve"
-	}
+	},
+	"exclude": ["node_modules", "dist"]
 }

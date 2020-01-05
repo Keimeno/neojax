@@ -1,5 +1,3 @@
-import { version } from '../package.json';
-
 // types import
 import NeoCajaxOptions from '../types/options';
 import NeoCajaxHeaders from '../types/headers';
@@ -16,10 +14,9 @@ import fetch, { RequestInit, Response, Headers } from 'node-fetch';
  */
 class NeoCajax {
 	private readonly _options: NeoCajaxOptions = {};
-	private readonly _version: string = version;
 	private readonly _defaultHeaders: NeoCajaxHeaders = {
 		'Content-Type': 'application/json; charset=utf8',
-		'Powered-By': 'neocajax; v' + this._version
+		'Powered-By': 'neocajax'
 	};
 
 	/**
@@ -228,13 +225,6 @@ class NeoCajax {
 	 */
 	public get options(): NeoCajaxOptions {
 		return this._options;
-	}
-
-	/**
-	 * returns the package version
-	 */
-	public get version(): string {
-		return this._version;
 	}
 
 	/**

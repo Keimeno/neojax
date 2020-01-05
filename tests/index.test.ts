@@ -1,5 +1,4 @@
 import NeoCajax from '../src/';
-import { version } from '../package.json';
 
 process.on('unhandledRejection', (err, p) => {});
 
@@ -86,15 +85,6 @@ describe('NeoCajax entry tests', () => {
 		});
 
 		expect(neocajax.options).toMatchObject({ baseUrl });
-	});
-
-	test('Can return package version', () => {
-		const baseUrl = 'http://localhost:3000/api/v1';
-		const neocajax = NeoCajax.create({
-			baseUrl
-		});
-
-		expect(neocajax.version).toEqual(version);
 	});
 
 	test('Can return default headers', () => {
