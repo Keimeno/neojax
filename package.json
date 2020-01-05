@@ -1,6 +1,6 @@
 {
 	"name": "neocajax",
-	"version": "2.0.8",
+	"version": "2.0.9",
 	"description": "neocajax is an extremely lightweight alternative to axios, with native typescript support.",
 	"main": "./dist/neocajax.min.umd.js",
 	"types": "./types/index.d.ts",

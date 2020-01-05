@@ -14,7 +14,6 @@ import 'unfetch/polyfill';
 class NeoCajax {
 	private readonly _options: NeoCajaxOptions = {};
 	private readonly _defaultHeaders: NeoCajaxHeaders = {
-		'Content-Type': 'application/json; charset=utf8',
 		'Powered-By': 'neocajax'
 	};
 
@@ -102,9 +101,9 @@ class NeoCajax {
 
 		headers = this.parseHeadersToNeoCajaxHeaders(response.headers);
 
-		if ((headers['Content-Type'] || '').match(/.*application\/json.*/)) {
+		try {
 			body = await response.json();
-		} else {
+		} catch (e) {
 			body = await response.text();
 		}
 
