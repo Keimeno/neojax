@@ -4,10 +4,9 @@ import NeoCajaxHeaders from '../types/headers';
 import NeoCajaxResponse, {
 	NeoCajaxConvolutedResponse
 } from '../types/response.js';
-import NeoCajaxError from '../types/error.js';
 
-// import fetch api
-import fetch, { RequestInit, Response, Headers } from 'node-fetch';
+// import nodeFetch api
+import nodeFetch, { RequestInit, Response, Headers } from 'node-fetch';
 
 /**
  * NeoCajax class
@@ -98,7 +97,7 @@ class NeoCajax {
 			init.body = JSON.stringify(data);
 		}
 
-		const response: Response = await fetch(finalUrl, init);
+		const response: Response = await nodeFetch(finalUrl, init);
 		let body: object | string | number | boolean;
 
 		headers = this.parseHeadersToNeoCajaxHeaders(response.headers);
@@ -156,7 +155,7 @@ class NeoCajax {
 	}
 
 	/**
-	 * Parses node-fetch headers into useable NeoCajaxHeaders
+	 * Parses nodeFetch headers into useable NeoCajaxHeaders
 	 *
 	 * @param headers
 	 */
