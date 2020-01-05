@@ -245,4 +245,6 @@ class NeoCajax {
 	}
 }
 
+export { NeoCajax };
+
 export default new NeoCajax();

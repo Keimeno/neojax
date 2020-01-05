@@ -2,14 +2,17 @@ import NeoCajaxOptions from './options';
 import NeoCajaxError from './error';
 import NeoCajaxHeaders from './headers';
 import NeoCajaxResponse, { NeoCajaxConvolutedResponse } from './response';
-import hey from '../src/';
+import NeoCajax from '../src/';
 
 export {
 	NeoCajaxOptions,
 	NeoCajaxError,
 	NeoCajaxResponse,
 	NeoCajaxHeaders,
-	NeoCajaxConvolutedResponse
+	NeoCajaxConvolutedResponse,
+	NeoCajax
 };
 
-export default NeoCajax;
+declare module 'neocajax' {
+	export = NeoCajax;
+}
