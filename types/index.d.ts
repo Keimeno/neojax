@@ -14,5 +14,6 @@ export {
 };
 
 declare module 'neocajax' {
+	// @ts-ignore
 	export = NeoCajax;
 }
