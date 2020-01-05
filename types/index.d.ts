@@ -4,7 +4,7 @@ import NeoCajaxHeaders from './headers';
 import NeoCajaxResponse, { NeoCajaxConvolutedResponse } from './response';
 import NeoCajax from '../src/';
 
-declare module '@keimeno/neocajax' {
+declare module 'neocajax' {
 	export {
 		NeoCajaxOptions,
 		NeoCajaxError,
