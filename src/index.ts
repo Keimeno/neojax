@@ -155,7 +155,7 @@ class NeoCajax {
 	}
 
 	/**
-	 * Parses node-nodeFetch headers into useable NeoCajaxHeaders
+	 * Parses nodeFetch headers into useable NeoCajaxHeaders
 	 *
 	 * @param headers
 	 */
