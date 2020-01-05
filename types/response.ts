@@ -4,7 +4,7 @@ type NeoCajaxResponse = {
 	status: number;
 	headers: NeoCajaxHeaders;
 	url: string;
-	data: object | string | number | boolean;
+	data: any;
 };
 
 type NeoCajaxConvolutedResponse = NeoCajaxResponse & {
