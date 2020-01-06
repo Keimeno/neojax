@@ -2,6 +2,7 @@
 **/*.js
 **/*.yml
 **/*.md
+tsconfig.json
 dist/
 node_modules/
 coverage/
