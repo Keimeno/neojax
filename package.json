@@ -34,7 +34,6 @@
 	},
 	"homepage": "https://github.com/keimeno/neojax#readme",
 	"devDependencies": {
-		"@babel/preset-react": "^7.7.4",
 		"@types/jest": "^24.0.25",
 		"awesome-typescript-loader": "^5.2.1",
 		"babel-core": "^6.26.3",
