@@ -3,7 +3,7 @@
 	"author": "Keimeno",
 	"license": "ISC",
 	"version": "2.1.0",
-	"description": "neocajax is a lightweight alternative to axios, with native typescript support.",
+	"description": "neojax is a lightweight alternative to axios, with native typescript support.",
 	"main": "./dist/neocajax.min.umd.js",
 	"types": "./types/index.d.ts",
 	"scripts": {
