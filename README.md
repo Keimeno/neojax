@@ -2,7 +2,7 @@
 
 ## Description
 
-neojax is an extremely lightweight alternative to axios, with native typescript support.
+neojax is a lightweight alternative to axios, with native typescript support.
 
 ## Setup
 
