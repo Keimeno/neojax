@@ -4,6 +4,12 @@
 
 neojax is a lightweight alternative to axios, with native typescript support.
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/2964d5b17a2c4bf8957bc205160157ae)](https://www.codacy.com/manual/Keimeno/neojax?utm_source=github.com&utm_medium=referral&utm_content=Keimeno/neojax&utm_campaign=Badge_Grade)
+
+[![neojax npm](https://img.shields.io/npm/l/neojax.svg)](https://npmjs.com/package/neojax)
+
+[![neojax npm](https://img.shields.io/npm/v/neojax.svg)](https://npmjs.com/package/neojax)
+
 ## Setup
 
 ### npm
