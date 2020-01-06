@@ -1,4 +1,4 @@
-# neojax v2.1
+<p align="center"><img src="http://image.monternos.net/u/n2mF1U.png" width="300px"/></p>
 
 ## Description
 
