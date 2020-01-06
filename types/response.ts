@@ -4,7 +4,7 @@ type NeojaxResponse = {
 	status: number;
 	headers: NeojaxHeaders;
 	url: string;
-	data: any;
+	data: any; // eslint-disable-line
 };
 
 type NeojaxConvolutedResponse = NeojaxResponse & {
