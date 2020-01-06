@@ -39,7 +39,6 @@
 		"webpack-cli": "^3.2.1"
 	},
 	"dependencies": {
-		"@types/node-fetch": "^2.5.4",
 		"unfetch": "^4.1.0"
 	}
 }
