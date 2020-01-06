@@ -1,7 +1,9 @@
 {
-	"name": "neocajax",
-	"version": "2.0.9",
-	"description": "neocajax is an extremely lightweight alternative to axios, with native typescript support.",
+	"name": "neojax",
+	"author": "Keimeno",
+	"license": "ISC",
+	"version": "2.1.0",
+	"description": "neocajax is a lightweight alternative to axios, with native typescript support.",
 	"main": "./dist/neocajax.min.umd.js",
 	"types": "./types/index.d.ts",
 	"scripts": {
@@ -10,20 +12,20 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/keimeno/neocajax.git"
+		"url": "git+https://github.com/keimeno/neojax.git"
 	},
 	"keywords": [
-		"Ajax",
-		"Cajax",
-		"Promise",
-		"ClassedAjax"
+		"neojax",
+		"http client",
+		"client",
+		"http",
+		"ajax",
+		"lightweight"
 	],
-	"author": "InteraApps",
-	"license": "ISC",
 	"bugs": {
-		"url": "https://github.com/keimeno/neocajax/issues"
+		"url": "https://github.com/keimeno/neojax/issues"
 	},
-	"homepage": "https://github.com/keimeno/neocajax#readme",
+	"homepage": "https://github.com/keimeno/neojax#readme",
 	"devDependencies": {
 		"@babel/preset-react": "^7.7.4",
 		"@types/jest": "^24.0.25",
