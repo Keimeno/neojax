@@ -1,15 +1,22 @@
 {
 	"name": "neojax",
-	"author": "Keimeno",
-	"license": "ISC",
 	"version": "2.1.0",
+	"author": "Keimeno",
 	"description": "neojax is a lightweight alternative to axios, with native typescript support.",
 	"main": "./dist/neocajax.min.umd.js",
+	"browser": "./dist/neocajax.min.js",
 	"types": "./types/index.d.ts",
 	"scripts": {
 		"build": "webpack",
 		"test": "jest --coverage --verbose --passWithNoTests"
 	},
+	"license": "Apache-2.0",
+	"licenses": [
+		{
+			"type": "Apache-2.0",
+			"url": "http://www.apache.org/licenses/LICENSE-2.0"
+		}
+	],
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/keimeno/neojax.git"
