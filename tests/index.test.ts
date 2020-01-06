@@ -1,6 +1,15 @@
 import Neojax from '../src/';
 
-process.on('unhandledRejection', (err, p) => {});
+process.on(
+	'unhandledRejection',
+	(err: object | null | undefined, p: Promise<null>) => {
+		if (err) {
+			return;
+		}
+
+		p.finally(() => 0);
+	}
+);
 
 describe('Neojax entry tests', () => {
 	test('Can change options', async () => {
