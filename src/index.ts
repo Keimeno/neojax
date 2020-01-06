@@ -21,11 +21,11 @@ class Neojax {
 	 * @param options
 	 */
 	constructor(options?: NeojaxOptions) {
-		let headers: NeojaxHeaders = {};
+		let headers: NeojaxHeaders | undefined = {};
 
 		if (options) {
 			this._options = options;
-			headers = options.headers || {};
+			headers = options.headers;
 		}
 
 		// Set default headers
@@ -40,7 +40,7 @@ class Neojax {
 	 *
 	 * @param options
 	 */
-	public create(options?: NeojaxOptions): Neojax {
+	public create(options?: NeojaxOptions) {
 		return new Neojax(options);
 	}
 
@@ -63,8 +63,8 @@ class Neojax {
 		data: object | null,
 		options?: NeojaxOptions
 	): Promise<NeojaxConvolutedResponse> {
-		let finalUrl = '';
-		let headers: NeojaxHeaders = this._options.headers || {};
+		let finalUrl: string = '';
+		let headers: NeojaxHeaders | undefined = this._options.headers;
 
 		if (this._options.baseUrl) {
 			finalUrl = this._options.baseUrl + url;
@@ -83,7 +83,7 @@ class Neojax {
 			}
 		}
 
-		const init: RequestInit = {
+		const init: any = {
 			method,
 			headers: {
 				...headers
@@ -94,7 +94,7 @@ class Neojax {
 			init.body = JSON.stringify(data);
 		}
 
-		const response = await fetch(finalUrl, init);
+		const response: any = await fetch(finalUrl, init);
 		let body: object | string | number | boolean;
 
 		headers = this.parseHeadersToNeojaxHeaders(response.headers);
@@ -130,18 +130,25 @@ class Neojax {
 		data: object | null = null,
 		options?: NeojaxOptions
 	): Promise<NeojaxResponse> {
-		return new Promise<NeojaxResponse>(async (resolve, reject) => {
-			const response = await this.sendRequest(url, method, data, options);
+		return new Promise<NeojaxResponse>(
+			async (resolve: any, reject: any) => {
+				const response = await this.sendRequest(
+					url,
+					method,
+					data,
+					options
+				);
 
-			if (response.success) {
-				resolve(response);
-			} else {
-				reject({
-					response: response as NeojaxResponse,
-					message: response.message
-				});
+				if (response.success) {
+					resolve(response);
+				} else {
+					reject({
+						response: response as NeojaxResponse,
+						message: response.message
+					});
+				}
 			}
-		});
+		);
 	}
 
 	/**
@@ -149,9 +156,8 @@ class Neojax {
 	 *
 	 * @param headers
 	 */
-	private parseHeadersToNeojaxHeaders(headers: Headers): NeojaxHeaders {
-		const newHeaders: NeojaxHeaders = {};
-
+	private parseHeadersToNeojaxHeaders(headers: any): NeojaxHeaders {
+		let newHeaders: NeojaxHeaders = {};
 		headers.forEach((value: string, name: string) => {
 			newHeaders[name] = value;
 		});

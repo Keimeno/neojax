@@ -1,4 +1,3 @@
-/* eslint quotes: ["error", "double"] */
 {
 	"module": "commonjs",
 	"target": "es5",

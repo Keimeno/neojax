@@ -14,7 +14,6 @@ export {
 };
 
 declare module 'neojax' {
-	// eslint-disable-next-line
 	// @ts-ignore
 	export = Neojax;
 }

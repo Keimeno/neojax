@@ -1,6 +1,6 @@
 {
 	"name": "neojax",
-	"version": "2.1.2",
+	"version": "2.1.1",
 	"author": "Keimeno",
 	"description": "neojax is a lightweight alternative to axios, with native typescript support.",
 	"main": "./dist/neojax.min.umd.js",
@@ -8,8 +8,7 @@
 	"types": "./types/index.d.ts",
 	"scripts": {
 		"build": "webpack",
-		"test": "jest --coverage --verbose --passWithNoTests",
-		"lint": "eslint ./**"
+		"test": "jest --coverage --verbose --passWithNoTests"
 	},
 	"license": "Apache-2.0",
 	"licenses": [
@@ -36,12 +35,9 @@
 	"homepage": "https://github.com/keimeno/neojax#readme",
 	"devDependencies": {
 		"@types/jest": "^24.0.25",
-		"@typescript-eslint/eslint-plugin": "^2.14.0",
-		"@typescript-eslint/parser": "^2.14.0",
 		"awesome-typescript-loader": "^5.2.1",
 		"babel-core": "^6.26.3",
 		"babel-loader": "^8.0.6",
-		"eslint": "^6.8.0",
 		"jest": "^24.9.0",
 		"ts-jest": "^24.2.0",
 		"typescript": "^3.7.4",

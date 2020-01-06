@@ -1,5 +1,5 @@
 type LooseObject = object & {
-	[key: string]: string;
+	[key: string]: any;
 };
 
 type NeojaxHeaders = LooseObject & {
