@@ -94,7 +94,7 @@ describe('Neojax entry tests', () => {
 		});
 
 		expect(neojax.defaultHeaders).toMatchObject({
-			'Content-Type': 'application/json; charset=utf8'
+			'Powered-By': 'neojax'
 		});
 	});
 });
