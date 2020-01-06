@@ -1,17 +1,17 @@
-import NeoCajaxHeaders from './headers';
+import NeojaxHeaders from './headers';
 
-type NeoCajaxResponse = {
+type NeojaxResponse = {
 	status: number;
-	headers: NeoCajaxHeaders;
+	headers: NeojaxHeaders;
 	url: string;
 	data: any;
 };
 
-type NeoCajaxConvolutedResponse = NeoCajaxResponse & {
+type NeojaxConvolutedResponse = NeojaxResponse & {
 	success: boolean;
 	message: string;
 };
 
-export { NeoCajaxConvolutedResponse, NeoCajaxResponse };
+export { NeojaxConvolutedResponse, NeojaxResponse };
 
-export default NeoCajaxResponse;
+export default NeojaxResponse;

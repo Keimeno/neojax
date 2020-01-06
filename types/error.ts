@@ -1,8 +1,8 @@
-import NeoCajaxResponse from './response';
+import NeojaxResponse from './response';
 
-type NeoCajaxError = {
-	response: NeoCajaxResponse;
+type NeojaxError = {
+	response: NeojaxResponse;
 	message: string;
 };
 
-export default NeoCajaxError;
+export default NeojaxError;

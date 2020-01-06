@@ -2,13 +2,13 @@ const path = require('path');
 
 const umdConfig = {
 	entry: {
-		'neocajax.min': './src/index.ts'
+		'neojax.min': './src/index.ts'
 	},
 	output: {
 		path: path.resolve(__dirname, 'dist'),
 		filename: '[name].umd.js',
 		libraryTarget: 'umd',
-		library: 'neocajax',
+		library: 'neojax',
 		umdNamedDefine: true
 	},
 	resolve: {
@@ -44,13 +44,13 @@ const umdConfig = {
 
 const windowConfig = {
 	entry: {
-		'neocajax.min': './src/index.ts'
+		'neojax.min': './src/index.ts'
 	},
 	output: {
 		path: path.resolve(__dirname, 'dist'),
 		filename: '[name].js',
 		libraryTarget: 'window',
-		library: 'neocajax',
+		library: 'neojax',
 		umdNamedDefine: true
 	},
 	resolve: {

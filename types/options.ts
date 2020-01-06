@@ -1,8 +1,8 @@
-import NeoCajaxHeaders from './headers';
+import NeojaxHeaders from './headers';
 
-type NeoCajaxOptions = {
+type NeojaxOptions = {
 	baseUrl?: string;
-	headers?: NeoCajaxHeaders;
+	headers?: NeojaxHeaders;
 };
 
-export default NeoCajaxOptions;
+export default NeojaxOptions;

@@ -2,7 +2,7 @@ type LooseObject = object & {
 	[key: string]: any;
 };
 
-type NeoCajaxHeaders = LooseObject & {
+type NeojaxHeaders = LooseObject & {
 	Accept?: string;
 	'Accept-CH'?: string;
 	'Accept-CH-Lifetime'?: string;
@@ -93,13 +93,13 @@ type NeoCajaxHeaders = LooseObject & {
 	'WWW-Authenticate'?: string;
 	'Want-Digest'?: string;
 	Warning?: string;
-	'X-Content-Type-Options'?: string;
-	'X-DNS-Prefetch-Control'?: string;
-	'X-Forwarded-For'?: string;
-	'X-Forwarded-Host'?: string;
-	'X-Forwarded-Proto'?: string;
-	'X-Frame-Options'?: string;
-	'X-XSS-Protection'?: string;
+	'Content-Type-Options'?: string;
+	'DNS-Prefetch-Control'?: string;
+	'Forwarded-For'?: string;
+	'Forwarded-Host'?: string;
+	'Forwarded-Proto'?: string;
+	'Frame-Options'?: string;
+	'XSS-Protection'?: string;
 };
 
-export default NeoCajaxHeaders;
+export default NeojaxHeaders;

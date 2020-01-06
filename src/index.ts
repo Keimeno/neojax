@@ -1,29 +1,27 @@
 // types import
-import NeoCajaxOptions from '../types/options';
-import NeoCajaxHeaders from '../types/headers';
-import NeoCajaxResponse, {
-	NeoCajaxConvolutedResponse
-} from '../types/response.js';
+import NeojaxOptions from '../types/options';
+import NeojaxHeaders from '../types/headers';
+import NeojaxResponse, { NeojaxConvolutedResponse } from '../types/response.js';
 
 // import fetch api
 import 'unfetch/polyfill';
 
 /**
- * NeoCajax class
+ * Neojax class
  */
-class NeoCajax {
-	private readonly _options: NeoCajaxOptions = {};
-	private readonly _defaultHeaders: NeoCajaxHeaders = {
-		'Powered-By': 'neocajax'
+class Neojax {
+	private readonly _options: NeojaxOptions = {};
+	private readonly _defaultHeaders: NeojaxHeaders = {
+		'Powered-By': 'neojax'
 	};
 
 	/**
-	 * NeoCajax constructor, can take an options parameter
+	 * Neojax constructor, can take an options parameter
 	 *
 	 * @param options
 	 */
-	constructor(options?: NeoCajaxOptions) {
-		let headers: NeoCajaxHeaders | undefined = {};
+	constructor(options?: NeojaxOptions) {
+		let headers: NeojaxHeaders | undefined = {};
 
 		if (options) {
 			this._options = options;
@@ -38,20 +36,20 @@ class NeoCajax {
 	}
 
 	/**
-	 * Create a new NeoCajax instance out of your existing one.
+	 * Create a new Neojax instance out of your existing one.
 	 *
 	 * @param options
 	 */
-	public create(options?: NeoCajaxOptions) {
-		return new NeoCajax(options);
+	public create(options?: NeojaxOptions) {
+		return new Neojax(options);
 	}
 
 	/**
 	 * This is the function, that sends out every request.
 	 *
-	 * NeoCajaxOptions priority:
-	 *  1. NeoCajaxOptions specified in every single request
-	 *  2. NeoCajaxOptions set when creating a new instance through the create method
+	 * NeojaxOptions priority:
+	 *  1. NeojaxOptions specified in every single request
+	 *  2. NeojaxOptions set when creating a new instance through the create method
 	 *  3. Defaultoptions specified in class
 	 *
 	 * @param url
@@ -63,10 +61,10 @@ class NeoCajax {
 		url: string,
 		method: string,
 		data: object | null,
-		options?: NeoCajaxOptions
-	): Promise<NeoCajaxConvolutedResponse> {
+		options?: NeojaxOptions
+	): Promise<NeojaxConvolutedResponse> {
 		let finalUrl: string = '';
-		let headers: NeoCajaxHeaders | undefined = this._options.headers;
+		let headers: NeojaxHeaders | undefined = this._options.headers;
 
 		if (this._options.baseUrl) {
 			finalUrl = this._options.baseUrl + url;
@@ -99,7 +97,7 @@ class NeoCajax {
 		const response: any = await fetch(finalUrl, init);
 		let body: object | string | number | boolean;
 
-		headers = this.parseHeadersToNeoCajaxHeaders(response.headers);
+		headers = this.parseHeadersToNeojaxHeaders(response.headers);
 
 		try {
 			body = await response.json();
@@ -119,7 +117,7 @@ class NeoCajax {
 
 	/**
 	 * Manages all incoming requests,
-	 * returns neocajaxerror or neocajaxresponse as promise
+	 * returns neojaxerror or neojaxresponse as promise
 	 *
 	 * @param method
 	 * @param url
@@ -130,9 +128,9 @@ class NeoCajax {
 		method: string,
 		url: string,
 		data: object | null = null,
-		options?: NeoCajaxOptions
-	): Promise<NeoCajaxResponse> {
-		return new Promise<NeoCajaxResponse>(
+		options?: NeojaxOptions
+	): Promise<NeojaxResponse> {
+		return new Promise<NeojaxResponse>(
 			async (resolve: any, reject: any) => {
 				const response = await this.sendRequest(
 					url,
@@ -145,7 +143,7 @@ class NeoCajax {
 					resolve(response);
 				} else {
 					reject({
-						response: response as NeoCajaxResponse,
+						response: response as NeojaxResponse,
 						message: response.message
 					});
 				}
@@ -154,12 +152,12 @@ class NeoCajax {
 	}
 
 	/**
-	 * Parses fetch headers into useable NeoCajaxHeaders
+	 * Parses fetch headers into useable NeojaxHeaders
 	 *
 	 * @param headers
 	 */
-	private parseHeadersToNeoCajaxHeaders(headers: any): NeoCajaxHeaders {
-		let newHeaders: NeoCajaxHeaders = {};
+	private parseHeadersToNeojaxHeaders(headers: any): NeojaxHeaders {
+		let newHeaders: NeojaxHeaders = {};
 		headers.forEach((value: string, name: string) => {
 			newHeaders[name] = value;
 		});
@@ -173,10 +171,7 @@ class NeoCajax {
 	 * @param url
 	 * @param options
 	 */
-	public get(
-		url: string,
-		options?: NeoCajaxOptions
-	): Promise<NeoCajaxResponse> {
+	public get(url: string, options?: NeojaxOptions): Promise<NeojaxResponse> {
 		return this.manageRequest('GET', url, null, options);
 	}
 
@@ -190,8 +185,8 @@ class NeoCajax {
 	public post(
 		url: string,
 		data: object | null = null,
-		options?: NeoCajaxOptions
-	): Promise<NeoCajaxResponse> {
+		options?: NeojaxOptions
+	): Promise<NeojaxResponse> {
 		return this.manageRequest('POST', url, data, options);
 	}
 
@@ -205,8 +200,8 @@ class NeoCajax {
 	public put(
 		url: string,
 		data: object | null = null,
-		options?: NeoCajaxOptions
-	): Promise<NeoCajaxResponse> {
+		options?: NeojaxOptions
+	): Promise<NeojaxResponse> {
 		return this.manageRequest('PUT', url, data, options);
 	}
 
@@ -220,26 +215,26 @@ class NeoCajax {
 	public delete(
 		url: string,
 		data: object | null = null,
-		options?: NeoCajaxOptions
-	): Promise<NeoCajaxResponse> {
+		options?: NeojaxOptions
+	): Promise<NeojaxResponse> {
 		return this.manageRequest('DELETE', url, data, options);
 	}
 
 	/**
 	 * returns the configured options
 	 */
-	public get options(): NeoCajaxOptions {
+	public get options(): NeojaxOptions {
 		return this._options;
 	}
 
 	/**
 	 * returns the default headers
 	 */
-	public get defaultHeaders(): NeoCajaxHeaders {
+	public get defaultHeaders(): NeojaxHeaders {
 		return this._defaultHeaders;
 	}
 }
 
-export { NeoCajax };
+export { Neojax };
 
-export default new NeoCajax();
+export default new Neojax();
