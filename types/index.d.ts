@@ -1,19 +1,19 @@
-import NeoCajaxOptions from './options';
-import NeoCajaxError from './error';
-import NeoCajaxHeaders from './headers';
-import NeoCajaxResponse, { NeoCajaxConvolutedResponse } from './response';
-import NeoCajax from '../src/';
+import NeojaxOptions from './options';
+import NeojaxError from './error';
+import NeojaxHeaders from './headers';
+import NeojaxResponse, { NeojaxConvolutedResponse } from './response';
+import Neojax from '../src/';
 
 export {
-	NeoCajaxOptions,
-	NeoCajaxError,
-	NeoCajaxResponse,
-	NeoCajaxHeaders,
-	NeoCajaxConvolutedResponse,
-	NeoCajax
+	NeojaxOptions,
+	NeojaxError,
+	NeojaxResponse,
+	NeojaxHeaders,
+	NeojaxConvolutedResponse,
+	Neojax
 };
 
-declare module 'neocajax' {
+declare module 'neojax' {
 	// @ts-ignore
-	export = NeoCajax;
+	export = Neojax;
 }
