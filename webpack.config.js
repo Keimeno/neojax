@@ -5,7 +5,6 @@ const duplicate = {
 	output: {
 		path: path.resolve(__dirname, 'dist'),
 		libraryTarget: 'umd',
-		library: 'neojax',
 		umdNamedDefine: true
 	},
 	resolve: {
@@ -44,7 +43,8 @@ const umdConfig = {
 		'neojax.min': './src/index.ts'
 	},
 	output: {
-		filename: '[name].umd.js'
+		filename: '[name].umd.js',
+		library: 'neojax'
 	},
 	...duplicate
 };
