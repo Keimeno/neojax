@@ -21,7 +21,7 @@ npm install neojax --save
 
 ```html
 <script
-	src="https://cdn.jsdelivr.net/npm/neojax@latest/dist/neojax.min.js"
+	src="https://cdn.jsdelivr.net/npm/neojax@latest"
 	type="text/javascript"
 ></script>
 ```
