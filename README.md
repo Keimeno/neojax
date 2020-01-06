@@ -1,13 +1,22 @@
-# neojax v2.1
+<p align="center">
+<img src="https://i.imgur.com/SjvwtGV.png" style="max-width: 500px;"/><br />
+<a href="https://www.codacy.com/manual/Keimeno/neojax?utm_source=github.com&utm_medium=referral&utm_content=Keimeno/neojax&utm_campaign=Badge_Grade">
+<img src="https://api.codacy.com/project/badge/Grade/2964d5b17a2c4bf8957bc205160157ae" alt="CodacyBadge" />
+</a>
+<a href="https://api.codeclimate.com/v1/badges/fc83b2376da001e0df6b/maintainability">
+<img src="https://api.codeclimate.com/v1/badges/fc83b2376da001e0df6b/maintainability" alt="Maintainability" />
+</a>
+<a href="https://npmjs.com/package/neojax">
+<img src="https://img.shields.io/npm/l/neojax.svg" alt="neojax npm" />
+</a>
+<a href="https://npmjs.com/package/neojax">
+<img src="https://img.shields.io/npm/v/neojax.svg" alt="neojax npm" />
+</a>
+</p>
 
 ## Description
 
 neojax is a lightweight alternative to axios, with native typescript support.
-
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/2964d5b17a2c4bf8957bc205160157ae)](https://www.codacy.com/manual/Keimeno/neojax?utm_source=github.com&utm_medium=referral&utm_content=Keimeno/neojax&utm_campaign=Badge_Grade)
-[![Maintainability](https://api.codeclimate.com/v1/badges/fc83b2376da001e0df6b/maintainability)](https://codeclimate.com/github/Keimeno/neojax/maintainability)
-[![neojax npm](https://img.shields.io/npm/l/neojax.svg)](https://npmjs.com/package/neojax)
-[![neojax npm](https://img.shields.io/npm/v/neojax.svg)](https://npmjs.com/package/neojax)
 
 ## Setup
 
@@ -21,7 +30,7 @@ npm install neojax --save
 
 ```html
 <script
-	src="https://cdn.jsdelivr.net/npm/neojax@latest/dist/neojax.min.js"
+	src="https://cdn.jsdelivr.net/npm/neojax@latest"
 	type="text/javascript"
 ></script>
 ```

@@ -1,3 +1,7 @@
 exclude_paths:
     - 'dist/**'
-    - '**/tests/**'
+    - 'tests/**'
+    - 'node_modules/**'
+    - '**.js'
+    - '**.md'
+    - '**.yml'
