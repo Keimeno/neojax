@@ -267,7 +267,6 @@ var Neojax = /** @class */ (function () {
     });
     return Neojax;
 }());
-// export { Neojax };
 var index = new Neojax();
 
 export default index;

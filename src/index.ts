@@ -213,6 +213,4 @@ class Neojax {
 	}
 }
 
-// export { Neojax };
-
 export default new Neojax();
