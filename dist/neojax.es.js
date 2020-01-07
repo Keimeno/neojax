@@ -1,4 +1,4 @@
-/* neojax version 2.1.4 Copyright (c) Keimeno
+/* neojax version 2.1.5 Copyright (c) Keimeno
    licensed under Apache-2.0 http://www.apache.org/licenses/LICENSE-2.0 */
 import 'unfetch/polyfill';
 
@@ -76,9 +76,16 @@ var Neojax = /** @class */ (function () {
      */
     function Neojax(options) {
         this._options = {};
+        this._defaultHeaders = {
+            'Content-Type': 'application/json; charset=utf8'
+        };
+        var headers = {};
         if (options) {
             this._options = options;
+            headers = options.headers || {};
         }
+        // Set default headers
+        this._options.headers = __assign(__assign({}, this._defaultHeaders), headers);
     }
     /**
      * Create a new Neojax instance out of your existing one.
@@ -261,6 +268,16 @@ var Neojax = /** @class */ (function () {
          */
         get: function () {
             return this._options;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Neojax.prototype, "defaultHeaders", {
+        /**
+         * returns the default headers
+         */
+        get: function () {
+            return this._defaultHeaders;
         },
         enumerable: true,
         configurable: true

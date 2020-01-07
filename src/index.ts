@@ -11,6 +11,9 @@ import 'unfetch/polyfill';
  */
 class Neojax {
 	private readonly _options: NeojaxOptions = {};
+	private readonly _defaultHeaders: NeojaxHeaders = {
+		'Content-Type': 'application/json; charset=utf8'
+	};
 
 	/**
 	 * Neojax constructor, can take an options parameter
@@ -18,9 +21,18 @@ class Neojax {
 	 * @param options
 	 */
 	constructor(options?: NeojaxOptions) {
+		let headers: NeojaxHeaders = {};
+
 		if (options) {
 			this._options = options;
+			headers = options.headers || {};
 		}
+
+		// Set default headers
+		this._options.headers = {
+			...this._defaultHeaders,
+			...headers
+		};
 	}
 
 	/**
@@ -210,6 +222,13 @@ class Neojax {
 	 */
 	public get options(): NeojaxOptions {
 		return this._options;
+	}
+
+	/**
+	 * returns the default headers
+	 */
+	public get defaultHeaders(): NeojaxHeaders {
+		return this._defaultHeaders;
 	}
 }
 
