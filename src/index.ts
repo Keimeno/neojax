@@ -11,9 +11,6 @@ import 'unfetch/polyfill';
  */
 class Neojax {
 	private readonly _options: NeojaxOptions = {};
-	private readonly _defaultHeaders: NeojaxHeaders = {
-		'Powered-By': 'neojax'
-	};
 
 	/**
 	 * Neojax constructor, can take an options parameter
@@ -21,18 +18,9 @@ class Neojax {
 	 * @param options
 	 */
 	constructor(options?: NeojaxOptions) {
-		let headers: NeojaxHeaders = {};
-
 		if (options) {
 			this._options = options;
-			headers = options.headers || {};
 		}
-
-		// Set default headers
-		this._options.headers = {
-			...this._defaultHeaders,
-			...headers
-		};
 	}
 
 	/**
@@ -63,7 +51,7 @@ class Neojax {
 		data: object | null,
 		options?: NeojaxOptions
 	): Promise<NeojaxConvolutedResponse> {
-		let finalUrl = '';
+		let finalUrl = url;
 		let headers: NeojaxHeaders = this._options.headers || {};
 
 		if (this._options.baseUrl) {
@@ -98,11 +86,14 @@ class Neojax {
 		let body: object | string | number | boolean;
 
 		headers = this.parseHeadersToNeojaxHeaders(response.headers);
-
 		try {
 			body = await response.json();
 		} catch (e) {
-			body = await response.text();
+			try {
+				body = await response.text();
+			} catch (err) {
+				body = {};
+			}
 		}
 
 		return {
@@ -220,15 +211,8 @@ class Neojax {
 	public get options(): NeojaxOptions {
 		return this._options;
 	}
-
-	/**
-	 * returns the default headers
-	 */
-	public get defaultHeaders(): NeojaxHeaders {
-		return this._defaultHeaders;
-	}
 }
 
-export { Neojax };
+// export { Neojax };
 
 export default new Neojax();
