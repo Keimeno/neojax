@@ -1,4 +1,4 @@
-/* neojax version 2.1.5 Copyright (c) Keimeno
+/* neojax version 2.1.6 Copyright (c) Keimeno
    licensed under Apache-2.0 http://www.apache.org/licenses/LICENSE-2.0 */
 import 'unfetch/polyfill';
 
@@ -77,7 +77,7 @@ var Neojax = /** @class */ (function () {
     function Neojax(options) {
         this._options = {};
         this._defaultHeaders = {
-            'Content-Type': 'application/json; charset=utf8'
+            'Content-Type': 'application/json; charset=utf-8'
         };
         var headers = {};
         if (options) {
