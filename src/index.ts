@@ -12,7 +12,7 @@ import 'unfetch/polyfill';
 class Neojax {
 	private readonly _options: NeojaxOptions = {};
 	private readonly _defaultHeaders: NeojaxHeaders = {
-		'Content-Type': 'application/json; charset=utf8'
+		'Content-Type': 'application/json; charset=utf-8'
 	};
 
 	/**
