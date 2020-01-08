@@ -275,7 +275,6 @@ var Neojax = /** @class */ (function () {
      * @param options
      */
     Neojax.prototype.post = function (url, data, options) {
-        if (data === void 0) { data = null; }
         return this.manageRequest('POST', url, data, options);
     };
     /**
@@ -286,7 +285,6 @@ var Neojax = /** @class */ (function () {
      * @param options
      */
     Neojax.prototype.put = function (url, data, options) {
-        if (data === void 0) { data = null; }
         return this.manageRequest('PUT', url, data, options);
     };
     /**
@@ -297,7 +295,6 @@ var Neojax = /** @class */ (function () {
      * @param options
      */
     Neojax.prototype.delete = function (url, data, options) {
-        if (data === void 0) { data = null; }
         return this.manageRequest('DELETE', url, data, options);
     };
     Object.defineProperty(Neojax.prototype, "options", {
