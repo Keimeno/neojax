@@ -6,6 +6,9 @@
 <a href="https://api.codeclimate.com/v1/badges/fc83b2376da001e0df6b/maintainability">
 <img src="https://api.codeclimate.com/v1/badges/fc83b2376da001e0df6b/maintainability" alt="Maintainability" />
 </a>
+<a href="https://travis-ci.com/Keimeno/neojax">
+<img src="https://travis-ci.com/Keimeno/neojax.svg?branch=develop" alt="Build status" />
+</a>
 <a href="https://npmjs.com/package/neojax">
 <img src="https://img.shields.io/npm/l/neojax.svg" alt="neojax npm" />
 </a>
