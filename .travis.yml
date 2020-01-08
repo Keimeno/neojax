@@ -1,8 +1,8 @@
 language: node_js
 node_js:
-- stable
+  - stable
 after_success:
-- ".travis/push.sh"
+  - .travis/push.sh
 env:
   global:
     secure: OI3GYzUIXczcGYi1iJ7wqfHvwgOB3ZyS5I1xmovuPqp1+Hdp6um4IviD3hdJr/ioyM+ahdAGCmAGYSSIoZtO2AaF9qdLMowLrr2L+hXbyGowZEFrzWTX7SfBlVwN5mDvnEMw8uELyMO/Mr/F9qwL3DV+OFDmbFJ6vrnx7dl3baXKamAiWByqCo4U88Rc+rIkzfuvBcwZappdddd8mnHFU5XxrwqxCl5v2pdeX+0g7/wGkg9P+pOcczdUp8mPnZbK4KMMrJCYZk+g6AU/SHnz14a9xiSKUa90+u7pJfE0RaE3+IdZhmvAyD2KXCqDwzpV7Dzyqsqw03sxYwvxPsL/BwdlmbFxutT/4j/5ps9GU4Gp7iLU1Y/LH0uerjGiEpXt8zZuMoogejllqRLM3o9SyppGZeDo73M9B2Ijtz/u7lxYtMCO50+QnJYX5vpUdoy9Z25sC91oh+0nMhYwvcOqvF9HNEMwVtxgoygwNQA04i2mZa1djx6v0tA91CnHBJ9J6bwdSKDgNdu/OH1Zquv/d9YZkB+11g5psjMKnw3GfjDx8Z/B5RqxoWRYWnSAO4/r/tCshJ8OQUprPzWsGduze6Ri7zPZldelMvRw8kLc3Ra/+45XA6o2dkm+qQwPgPhEc0GPkNxNhftRLZZj+/g4g0hqdtS1QSulS3GHJNd7nuM=
