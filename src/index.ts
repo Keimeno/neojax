@@ -97,7 +97,7 @@ class Neojax {
 	 */
 	public post(
 		url: string,
-		data: object | null = null,
+		data?: object,
 		options?: NeojaxOptions
 	): Promise<NeojaxResponse> {
 		return this.manageRequest('POST', url, data, options);
@@ -112,7 +112,7 @@ class Neojax {
 	 */
 	public put(
 		url: string,
-		data: object | null = null,
+		data?: object,
 		options?: NeojaxOptions
 	): Promise<NeojaxResponse> {
 		return this.manageRequest('PUT', url, data, options);
@@ -127,7 +127,7 @@ class Neojax {
 	 */
 	public delete(
 		url: string,
-		data: object | null = null,
+		data?: object,
 		options?: NeojaxOptions
 	): Promise<NeojaxResponse> {
 		return this.manageRequest('DELETE', url, data, options);

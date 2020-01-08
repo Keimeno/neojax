@@ -141,7 +141,9 @@ describe('Neojax entry tests', () => {
 			baseUrl: startUrl
 		});
 
-		neojax.options.baseUrl = newUrl;
+		neojax.options = {
+			baseUrl: newUrl
+		};
 
 		expect(neojax.options.baseUrl).toBe(newUrl);
 	});

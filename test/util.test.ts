@@ -78,11 +78,13 @@ describe('utility tests', () => {
 		let response: Response;
 		try {
 			response = await nodefetch('https://reqres.in/');
+			// eslint-disable-next-line
+			// @ts-ignore
+			expect(await Util['retrieveData'](response)).toBeTruthy();
 		} catch (e) {
 			// eslint-disable-next-line
 			// @ts-ignore
 			response;
-			expect(await Util['retrieveData'](e)).toBeTruthy();
 		}
 	});
 
