@@ -38,6 +38,8 @@
 	},
 	"homepage": "https://github.com/keimeno/neojax#readme",
 	"devDependencies": {
+		"@types/cors": "^2.8.6",
+		"@types/express": "^4.17.2",
 		"@types/jest": "^24.0.25",
 		"@types/node-fetch": "^2.5.4",
 		"@typescript-eslint/eslint-plugin": "^2.14.0",
