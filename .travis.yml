@@ -1,13 +1,9 @@
 language: node_js
 node_js:
     - stable
-install:
-    - npm install -g codecov jest ts-jest
 after_success:
     - '.travis/push.sh'
-    - codecov
 env:
     global:
         - secure: fcNajpdx8x9wHc+pHvT+qPAjwMKBbxs5Tul00x8s4ySP/2lk8UEI0Pmp9G+GpVFBZXqnZv9aHl4YCHa1j5sTvjC5yV0b+wC8Jm0ZUcX7NBtT9nATNstLdl1hsZZqEg8l77ZRGT+vVnP1AeCMT3T7fOUV/1yQUQ7/3g3VjV6jDmwCXXcngbquwesF6/crIn03SwWE6qXcoE+GpP0tvKe44w2RkCbhn0DfloFHELUt7pkZxkYepKb38FyCGIlSd6Ag6X4XKphFUDV+g0x78rbm+PR6NHAMr/Fo1gPwq6lWYiZ+GECK8QhqT/ZXN7FnPXOeX4d3gXiPgL1+r03mCtgcyOARMmlWU9CCGhAVs5MbtUMbu1Z1jhDSPYuwpGtmgdJbl0f/8OmfOSoh1h3o0OU3wVYBbvH0eJQ7TL39E8bYJwA//hfkwLSL9GXATtqdQvDKt0tZjR1DY5XrOf7ufgFoTbqdDYgc3KpZX3YuI5tSnTn1lE3qMSOUOAGXeNFGB/i1LPx6XZYxhrL/2lGev2NE+g4pgJmKSDqYABPe2YMvuxD79sUOTZ1EhIuRJx9CTV9Jtc2tzNK3UaGuDhRpdqXaSHBVVLxR/rJGCU9p2h0ju0HlUE0vrNc+LdoITOSrjJLUFO0QsRDZPeKtD43NcjT3OAggHWS10aXFsqG90FiENA8=
         - secure: thl4n5WbTTkmKxaHwG8xwfpod/YOiw6iLFSilS6tt6SvA61d9hN6RuoxipaZUdGqqIgQmB1gSHcoJzX2gEOUBKoTSTpnMTVWHtb0KhsMOxPFreRClWizWo9Id7N14tseNKKIOaFnP2Oe6Iv34I+zXpywZ8C0eUS9ZMFGzlRbwrUWYRcsnBvtlmTYZyEeJt1XeL/Leuj4ONC2cvvMGFt5+DfxLczjteoCx53BilWQlBzqKi8TyHUBCSw1sU8q3W0wS8o+hwF18CobNrO5Wnucpokn78sIWuCsrWXim9HRnbqf/d6SgtSk96FnLoyiGm1QWmaQ+huJ9Yxw4chIVbiF9/5GIoA0ezYXg172/joRQvaxvzUCdvOqDag652Q0Z5AevPudK8oJfXmyYHri3pTEdSe1OdsugI4IanU98zeHkM/f1+L2IXebks39z69gCYBdK8sOMZliW5o9MFqtSZWAJ3DOYWCu5aDcW1FQU+wYy8PvwD7MjgyhAkRMaUZ6DVX5DPXSDjygDgpNDZhGgEmqjcbybyGdRLDU5M82VTJnaveiGkGhdXSpvI/md2ZSqi74IO8jEI94cO408iWA8qJ0FRht2vw/EvJG+51OA45j6JjxQf5RLMBCj06Yu/Hu9OzCEDL8+xPC2p5EPKDZZCmTXxf4JX73JDqwmg8Xmttb8iM=
-        - test: d
