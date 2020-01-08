@@ -5,9 +5,6 @@ import NeojaxOptions from '../types/options';
 import NeojaxHeaders from '../types/headers';
 import NeojaxResponse from '../types/response.js';
 
-// import fetch api
-import 'unfetch/polyfill';
-
 /**
  * Neojax class
  */

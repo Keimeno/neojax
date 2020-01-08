@@ -1,24 +1,9 @@
 import 'unfetch/polyfill';
-import NeojaxHeaders from 'types/headers';
-import { NeojaxConvolutedResponse } from 'types/response';
-import NeojaxOptions from 'types/options';
+import NeojaxHeaders from '../types/headers';
+import { NeojaxConvolutedResponse } from '../types/response';
+import NeojaxOptions from '../types/options';
 
 class Util {
-	/**
-	 * Parses fetch headers into useable NeojaxHeaders
-	 *
-	 * @param headers
-	 */
-	public static parseHeadersToNeojaxHeaders(headers: Headers): NeojaxHeaders {
-		const newHeaders: NeojaxHeaders = {};
-
-		headers.forEach((value: string, name: string) => {
-			newHeaders[name] = value;
-		});
-
-		return newHeaders;
-	}
-
 	/**
 	 * This is the function, that sends out every request.
 	 *
@@ -37,10 +22,17 @@ class Util {
 		method: string,
 		data: object | null,
 		defaultOptions: NeojaxOptions,
-		options?: NeojaxOptions,
+		options?: NeojaxOptions
 	): Promise<NeojaxConvolutedResponse> {
-		const finalUrl = this.retrieveUrl(defaultOptions.baseUrl || '', (options || {}).baseUrl || '', url);
-		const headers = this.retrieveHeaders(defaultOptions.headers || {}, (options || {}).headers || {});
+		const finalUrl = this.retrieveUrl(
+			defaultOptions.baseUrl || '',
+			(options || {}).baseUrl || '',
+			url
+		);
+		const headers = this.retrieveHeaders(
+			defaultOptions.headers || {},
+			(options || {}).headers || {}
+		);
 
 		// builds init
 		const init: RequestInit = {
@@ -71,11 +63,30 @@ class Util {
 	}
 
 	/**
-	 * retrieves the data from the response object
-	 * 
-	 * @param response 
+	 * Parses fetch headers into useable NeojaxHeaders
+	 *
+	 * @param headers
 	 */
-	private static async retrieveData(response: Response): Promise<object | string> {
+	private static parseHeadersToNeojaxHeaders(
+		headers: Headers
+	): NeojaxHeaders {
+		const newHeaders: NeojaxHeaders = {};
+
+		headers.forEach((value: string, name: string) => {
+			newHeaders[name] = value;
+		});
+
+		return newHeaders;
+	}
+
+	/**
+	 * retrieves the data from the response object
+	 *
+	 * @param response
+	 */
+	private static async retrieveData(
+		response: Response
+	): Promise<object | string> {
 		try {
 			return await response.json();
 		} catch (e) {
@@ -92,12 +103,16 @@ class Util {
 	/**
 	 * retrieve the requested url.
 	 * this depends on the options priority
-	 * 
-	 * @param defaultUrl 
-	 * @param optionsUrl 
-	 * @param url 
+	 *
+	 * @param defaultUrl
+	 * @param optionsUrl
+	 * @param url
 	 */
-	private static retrieveUrl(defaultUrl: string, optionsUrl: string, url: string): string {
+	private static retrieveUrl(
+		defaultUrl: string,
+		optionsUrl: string,
+		url: string
+	): string {
 		if (optionsUrl) return optionsUrl + url;
 		return defaultUrl + url;
 	}
@@ -105,11 +120,14 @@ class Util {
 	/**
 	 * returns the headers, that are set for this request
 	 * this as well depends on the headers priority
-	 * 
-	 * @param defaultHeaders 
-	 * @param optionsHeaders 
+	 *
+	 * @param defaultHeaders
+	 * @param optionsHeaders
 	 */
-	private static retrieveHeaders(defaultHeaders: NeojaxHeaders, optionsHeaders: NeojaxHeaders): NeojaxHeaders {
+	private static retrieveHeaders(
+		defaultHeaders: NeojaxHeaders,
+		optionsHeaders: NeojaxHeaders
+	): NeojaxHeaders {
 		return {
 			...defaultHeaders,
 			...optionsHeaders
