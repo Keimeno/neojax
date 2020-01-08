@@ -9,6 +9,9 @@
 <a href="https://travis-ci.com/Keimeno/neojax">
 <img src="https://travis-ci.com/Keimeno/neojax.svg?branch=develop" alt="Build status" />
 </a>
+<a href="https://coveralls.io/github/Keimeno/neojax?branch=develop">
+<img src="https://coveralls.io/repos/github/Keimeno/neojax/badge.svg?branch=develop" alt="Coverage status" />
+</a>
 <a href="https://npmjs.com/package/neojax">
 <img src="https://img.shields.io/npm/l/neojax.svg" alt="neojax npm" />
 </a>
