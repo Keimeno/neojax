@@ -91,15 +91,13 @@ var Util = /** @class */ (function () {
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
-                        finalUrl = this.retrieveUrl(defaultOptions.baseUrl || '', (options || {}).baseUrl || '', url);
-                        headers = this.retrieveHeaders(defaultOptions.headers || {}, (options || {}).headers || {});
+                        finalUrl = Util.retrieveUrl(defaultOptions.baseUrl || '', (options || {}).baseUrl || '', url);
+                        headers = Util.retrieveHeaders(defaultOptions.headers || {}, (options || {}).headers || {});
                         init = {
                             method: method,
                             headers: __assign({}, headers)
                         };
-                        if (data) {
-                            init.body = JSON.stringify(data);
-                        }
+                        init.body = JSON.stringify(data);
                         return [4 /*yield*/, fetch(finalUrl, init)];
                     case 1:
                         response = _b.sent();
@@ -111,7 +109,7 @@ var Util = /** @class */ (function () {
                             success: response.ok,
                             message: response.statusText
                         };
-                        return [4 /*yield*/, this.retrieveData(response)];
+                        return [4 /*yield*/, Util.retrieveData(response)];
                     case 2: return [2 /*return*/, (_a.data = _b.sent(),
                             _a)];
                 }
@@ -125,9 +123,14 @@ var Util = /** @class */ (function () {
      */
     Util.parseHeadersToNeojaxHeaders = function (headers) {
         var newHeaders = {};
-        headers.forEach(function (value, name) {
-            newHeaders[name] = value;
-        });
+        try {
+            headers.forEach(function (value, name) {
+                newHeaders[name] = value;
+            });
+        }
+        catch (e) {
+            return {};
+        }
         return newHeaders;
     };
     /**
