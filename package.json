@@ -11,7 +11,7 @@
 		"build:cmd": "rmdir /q/s dist && rollup -c",
 		"build:bash": "rm -rf dist && rollup -c",
 		"test": "jest --coverage --coverageReporters=text-lcov | coveralls",
-		"lint": "eslint ./src**"
+		"lint": "eslint ./src/**"
 	},
 	"license": "Apache-2.0",
 	"licenses": [
