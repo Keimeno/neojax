@@ -3,7 +3,7 @@ node_js:
 - stable
 script:
 - npm test
-- npm build
+- npm run build
 after_success:
 - ".travis/push.sh"
 env:
