@@ -77,7 +77,7 @@ describe('utility tests', () => {
 	test('retrieve data string', async () => {
 		let response: Response;
 		try {
-			response = await nodefetch('https://reqres.in/');
+			response = await nodefetch('http://reqres.in/');
 			// eslint-disable-next-line
 			// @ts-ignore
 			expect(await Util['retrieveData'](response)).toBeTruthy();
