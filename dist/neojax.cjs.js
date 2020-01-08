@@ -1,4 +1,4 @@
-/* neojax version 2.1.7 Copyright (c) Keimeno
+/* neojax version 2.1.7 Copyright (c) Keimeno 2020
    licensed under Apache-2.0 http://www.apache.org/licenses/LICENSE-2.0 */
 'use strict';
 
