@@ -3,6 +3,7 @@ node_js:
     - stable
 install:
     - npm install -g codecov
+    - npm install -g jest
 after_success:
     - '.travis/push.sh'
     - codecov
