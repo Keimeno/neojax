@@ -1,6 +1,5 @@
 import Neojax from '../src/';
-import NeojaxResponse from '../types/response';
-import NeojaxError from '../types/error';
+import 'unfetch/polyfill';
 
 process.on(
 	'unhandledRejection',

@@ -90,7 +90,7 @@ describe('utility tests', () => {
 		nodefetch('https://wikipedia.org/').then(async (response: Response) => {
 			// eslint-disable-next-line
 			// @ts-ignore
-			expect(await Util['retrieveData'](response)).toBe(false); // if it couldn't retrieve the data it would return an empty string
+			expect(await Util['retrieveData'](response)).toBe(''); // if it couldn't retrieve the data it would return an empty string
 		});
 	});
 });
