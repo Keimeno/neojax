@@ -11,7 +11,6 @@ commit_website_files() {
 }
 
 upload_files() {
-  ls
   git remote add origin-neojax https://${GH_TOKEN}@github.com/Keimeno/neojax.git
   git push --silent origin-neojax develop
 }
