@@ -1,16 +1,15 @@
+import Util from './util';
+
 // types import
 import NeojaxOptions from '../types/options';
 import NeojaxHeaders from '../types/headers';
-import NeojaxResponse, { NeojaxConvolutedResponse } from '../types/response.js';
-
-// import fetch api
-import 'unfetch/polyfill';
+import NeojaxResponse from '../types/response.js';
 
 /**
  * Neojax class
  */
 class Neojax {
-	private readonly _options: NeojaxOptions = {};
+	private _options: NeojaxOptions = {};
 	private readonly _defaultHeaders: NeojaxHeaders = {
 		'Content-Type': 'application/json; charset=utf-8'
 	};
@@ -45,80 +44,6 @@ class Neojax {
 	}
 
 	/**
-	 * This is the function, that sends out every request.
-	 *
-	 * NeojaxOptions priority:
-	 *  1. NeojaxOptions specified in every single request
-	 *  2. NeojaxOptions set when creating a new instance through the create method
-	 *  3. Defaultoptions specified in class
-	 *
-	 * @param url
-	 * @param method
-	 * @param data
-	 * @param options
-	 */
-	private async sendRequest(
-		url: string,
-		method: string,
-		data: object | null,
-		options?: NeojaxOptions
-	): Promise<NeojaxConvolutedResponse> {
-		let finalUrl = url;
-		let headers: NeojaxHeaders = this._options.headers || {};
-
-		if (this._options.baseUrl) {
-			finalUrl = this._options.baseUrl + url;
-		}
-
-		if (options) {
-			if (options.baseUrl) {
-				finalUrl = options.baseUrl + url;
-			}
-
-			if (options.headers) {
-				headers = {
-					...headers,
-					...options.headers
-				};
-			}
-		}
-
-		const init: RequestInit = {
-			method,
-			headers: {
-				...headers
-			}
-		};
-
-		if (data) {
-			init.body = JSON.stringify(data);
-		}
-
-		const response = await fetch(finalUrl, init);
-		let body: object | string | number | boolean;
-
-		headers = this.parseHeadersToNeojaxHeaders(response.headers);
-		try {
-			body = await response.json();
-		} catch (e) {
-			try {
-				body = await response.text();
-			} catch (err) {
-				body = {};
-			}
-		}
-
-		return {
-			status: response.status,
-			headers,
-			url: response.url,
-			success: response.ok,
-			message: response.statusText,
-			data: body
-		};
-	}
-
-	/**
 	 * Manages all incoming requests,
 	 * returns neojaxerror or neojaxresponse as promise
 	 *
@@ -134,7 +59,13 @@ class Neojax {
 		options?: NeojaxOptions
 	): Promise<NeojaxResponse> {
 		return new Promise<NeojaxResponse>(async (resolve, reject) => {
-			const response = await this.sendRequest(url, method, data, options);
+			const response = await Util.sendRequest(
+				url,
+				method,
+				data,
+				this._options,
+				options
+			);
 
 			if (response.success) {
 				resolve(response);
@@ -145,21 +76,6 @@ class Neojax {
 				});
 			}
 		});
-	}
-
-	/**
-	 * Parses fetch headers into useable NeojaxHeaders
-	 *
-	 * @param headers
-	 */
-	private parseHeadersToNeojaxHeaders(headers: Headers): NeojaxHeaders {
-		const newHeaders: NeojaxHeaders = {};
-
-		headers.forEach((value: string, name: string) => {
-			newHeaders[name] = value;
-		});
-
-		return newHeaders;
 	}
 
 	/**
@@ -181,7 +97,7 @@ class Neojax {
 	 */
 	public post(
 		url: string,
-		data: object | null = null,
+		data?: object,
 		options?: NeojaxOptions
 	): Promise<NeojaxResponse> {
 		return this.manageRequest('POST', url, data, options);
@@ -196,7 +112,7 @@ class Neojax {
 	 */
 	public put(
 		url: string,
-		data: object | null = null,
+		data?: object,
 		options?: NeojaxOptions
 	): Promise<NeojaxResponse> {
 		return this.manageRequest('PUT', url, data, options);
@@ -211,7 +127,7 @@ class Neojax {
 	 */
 	public delete(
 		url: string,
-		data: object | null = null,
+		data?: object,
 		options?: NeojaxOptions
 	): Promise<NeojaxResponse> {
 		return this.manageRequest('DELETE', url, data, options);
@@ -222,6 +138,13 @@ class Neojax {
 	 */
 	public get options(): NeojaxOptions {
 		return this._options;
+	}
+
+	/**
+	 * makes it possible to change options
+	 */
+	public set options(options: NeojaxOptions) {
+		this._options = options;
 	}
 
 	/**
