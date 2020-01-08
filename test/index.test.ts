@@ -12,7 +12,7 @@ process.on(
 );
 
 describe('Neojax entry tests', () => {
-	test('Can change options', async () => {
+	test('Can change options', () => {
 		const baseUrl = 'http://localhost:3000/api/v1/';
 		const neojax = Neojax.create({
 			baseUrl
@@ -23,7 +23,7 @@ describe('Neojax entry tests', () => {
 		});
 	});
 
-	test('Can override options', async () => {
+	test('Can override options',  () => {
 		const baseUrl = 'http://localhost:3000/api/v1/';
 		const neojax = Neojax.create({
 			baseUrl,
@@ -39,7 +39,7 @@ describe('Neojax entry tests', () => {
 		});
 	});
 
-	test('Can perform GET request', async () => {
+	test('Can perform GET request',  () => {
 		const baseUrl = 'http://localhost:3000/api/v1/';
 		const neojax = Neojax.create({
 			baseUrl,
@@ -51,7 +51,7 @@ describe('Neojax entry tests', () => {
 		expect(neojax.get('information')).resolves.toBeFalsy();
 	});
 
-	test('Can perform POST request', async () => {
+	test('Can perform POST request',  () => {
 		const baseUrl = 'http://localhost:3000/api/v1/';
 		const neojax = Neojax.create({
 			baseUrl,
@@ -63,7 +63,7 @@ describe('Neojax entry tests', () => {
 		expect(neojax.post('information')).resolves.toBeFalsy();
 	});
 
-	test('Can perform PUT request', async () => {
+	test('Can perform PUT request',  () => {
 		const baseUrl = 'http://localhost:3000/api/v1/';
 		const neojax = Neojax.create({
 			baseUrl,
@@ -75,7 +75,7 @@ describe('Neojax entry tests', () => {
 		expect(neojax.put('information')).resolves.toBeFalsy();
 	});
 
-	test('Can perform DELETE request', async () => {
+	test('Can perform DELETE request',  () => {
 		const baseUrl = 'http://localhost:3000/api/v1/';
 		const neojax = Neojax.create({
 			baseUrl,
