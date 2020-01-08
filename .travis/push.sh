@@ -6,13 +6,14 @@ setup_git() {
 }
 
 commit_website_files() {
+  git checkout -b neojax-build
   git add dist
-  git commit -m "Travis build: $TRAVIS_BUILD_NUMBER"
+  git commit --message "Travis build: $TRAVIS_BUILD_NUMBER"
 }
 
 upload_files() {
-  git remote add origin https://${GH_TOKEN}@github.com/Keimeno/neojax.git > /dev/null 2>&1
-  git push --quiet --set-upstream origin develop
+  git remote add origin-neojax https://${GH_TOKEN}@github.com/Keimeno/neojax.git > /dev/null 2>&1
+  git push --quiet --set-upstream origin-neojax neojax-build
 }
 
 setup_git
