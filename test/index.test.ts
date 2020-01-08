@@ -1,5 +1,6 @@
 import Neojax from '../src/';
 import NeojaxResponse from '../types/response';
+import NeojaxError from '../types/error';
 
 process.on(
 	'unhandledRejection',
@@ -108,11 +109,30 @@ describe('Neojax entry tests', () => {
 		});
 	});
 
-	test('Can manage request', () => {
-		const url = 'https://api.kanye.rest/';
-		Neojax['manageRequest']('GET', url).then((response: NeojaxResponse) => {
-			expect(response).toMatchObject({ status: 200 });
-		});
+	test('Can manage request', async () => {
+		const url = 'https://reqres.in/api/users';
+		try {
+			const response = await Neojax.get(url);
+			expect(response).toMatchObject({
+				page: 1
+			});
+		} catch (error) {}
+	});
+
+	test('Can manage request receives 404', async () => {
+		const url = 'https://reqres.in/apwai';
+		try {
+			const response = await Neojax['manageRequest']('GET', url);
+			expect(response).toMatchObject({
+				page: 1
+			});
+		} catch (error) {
+			expect(error).toMatchObject({
+				response: {
+					status: 404
+				}
+			});
+		}
 	});
 
 	test('can set options after instance creation', () => {

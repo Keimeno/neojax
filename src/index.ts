@@ -59,7 +59,13 @@ class Neojax {
 		options?: NeojaxOptions
 	): Promise<NeojaxResponse> {
 		return new Promise<NeojaxResponse>(async (resolve, reject) => {
-			const response = await Util.sendRequest(url, method, data, this._options, options);
+			const response = await Util.sendRequest(
+				url,
+				method,
+				data,
+				this._options,
+				options
+			);
 
 			if (response.success) {
 				resolve(response);

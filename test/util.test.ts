@@ -64,11 +64,33 @@ describe('utility tests', () => {
 		expect(endUrl).toBe(fullUrl);
 	});
 
-	test('retrieve data', () => {
-		nodefetch('https://api.kanye.rest/').then((response: Response) => {
+	test('retrieve data object', () => {
+		nodefetch('https://api.kanye.rest/').then(
+			async (response: Response) => {
+				// eslint-disable-next-line
+				// @ts-ignore
+				expect(await Util['retrieveData'](response)).toBeTruthy(); // if it couldn't retrieve the data it would return a string
+			}
+		);
+	});
+
+	test('retrieve data string', async () => {
+		let response: Response;
+		try {
+			response = await nodefetch('https://reqres.in/');
+		} catch (e) {
 			// eslint-disable-next-line
 			// @ts-ignore
-			expect(Util['retrieveData'](response)).toBeInstanceOf(Object); // if it couldn't retrieve the data it would return a string
+			response;
+			expect(await Util['retrieveData'](e)).toBeTruthy();
+		}
+	});
+
+	test('retrieve data err', () => {
+		nodefetch('https://wikipedia.org/').then(async (response: Response) => {
+			// eslint-disable-next-line
+			// @ts-ignore
+			expect(await Util['retrieveData'](response)).toBe(false); // if it couldn't retrieve the data it would return an empty string
 		});
 	});
 });

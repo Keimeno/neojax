@@ -24,12 +24,12 @@ class Util {
 		defaultOptions: NeojaxOptions,
 		options?: NeojaxOptions
 	): Promise<NeojaxConvolutedResponse> {
-		const finalUrl = this.retrieveUrl(
+		const finalUrl = Util.retrieveUrl(
 			defaultOptions.baseUrl || '',
 			(options || {}).baseUrl || '',
 			url
 		);
-		const headers = this.retrieveHeaders(
+		const headers = Util.retrieveHeaders(
 			defaultOptions.headers || {},
 			(options || {}).headers || {}
 		);
@@ -42,9 +42,7 @@ class Util {
 			}
 		};
 
-		if (data) {
-			init.body = JSON.stringify(data);
-		}
+		init.body = JSON.stringify(data);
 
 		// get back the response
 		const response = await fetch(finalUrl, init);
@@ -58,7 +56,7 @@ class Util {
 			url: response.url,
 			success: response.ok,
 			message: response.statusText,
-			data: await this.retrieveData(response)
+			data: await Util.retrieveData(response)
 		};
 	}
 
@@ -72,9 +70,13 @@ class Util {
 	): NeojaxHeaders {
 		const newHeaders: NeojaxHeaders = {};
 
-		headers.forEach((value: string, name: string) => {
-			newHeaders[name] = value;
-		});
+		try {
+			headers.forEach((value: string, name: string) => {
+				newHeaders[name] = value;
+			});
+		} catch (e) {
+			return {};
+		}
 
 		return newHeaders;
 	}
