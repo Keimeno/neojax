@@ -1,4 +1,5 @@
 import Neojax from '../src/';
+import NeojaxResponse from '../types/response';
 
 process.on(
 	'unhandledRejection',
@@ -23,7 +24,7 @@ describe('Neojax entry tests', () => {
 		});
 	});
 
-	test('Can override options',  () => {
+	test('Can override options', () => {
 		const baseUrl = 'http://localhost:3000/api/v1/';
 		const neojax = Neojax.create({
 			baseUrl,
@@ -39,7 +40,7 @@ describe('Neojax entry tests', () => {
 		});
 	});
 
-	test('Can perform GET request',  () => {
+	test('Can perform GET request', () => {
 		const baseUrl = 'http://localhost:3000/api/v1/';
 		const neojax = Neojax.create({
 			baseUrl,
@@ -51,7 +52,7 @@ describe('Neojax entry tests', () => {
 		expect(neojax.get('information')).resolves.toBeFalsy();
 	});
 
-	test('Can perform POST request',  () => {
+	test('Can perform POST request', () => {
 		const baseUrl = 'http://localhost:3000/api/v1/';
 		const neojax = Neojax.create({
 			baseUrl,
@@ -63,7 +64,7 @@ describe('Neojax entry tests', () => {
 		expect(neojax.post('information')).resolves.toBeFalsy();
 	});
 
-	test('Can perform PUT request',  () => {
+	test('Can perform PUT request', () => {
 		const baseUrl = 'http://localhost:3000/api/v1/';
 		const neojax = Neojax.create({
 			baseUrl,
@@ -75,7 +76,7 @@ describe('Neojax entry tests', () => {
 		expect(neojax.put('information')).resolves.toBeFalsy();
 	});
 
-	test('Can perform DELETE request',  () => {
+	test('Can perform DELETE request', () => {
 		const baseUrl = 'http://localhost:3000/api/v1/';
 		const neojax = Neojax.create({
 			baseUrl,
@@ -105,5 +106,24 @@ describe('Neojax entry tests', () => {
 		expect(neojax.defaultHeaders).toMatchObject({
 			'Content-Type': 'application/json; charset=utf-8'
 		});
+	});
+
+	test('Can manage request', () => {
+		const url = 'https://api.kanye.rest/';
+		Neojax['manageRequest']('GET', url).then((response: NeojaxResponse) => {
+			expect(response).toMatchObject({ status: 200 });
+		});
+	});
+
+	test('can set options after instance creation', () => {
+		const startUrl = 'test';
+		const newUrl = 'test1';
+		const neojax = Neojax.create({
+			baseUrl: startUrl
+		});
+
+		neojax.options.baseUrl = newUrl;
+
+		expect(neojax.options.baseUrl).toBe(newUrl);
 	});
 });
