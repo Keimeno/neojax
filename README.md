@@ -122,5 +122,6 @@ If you want to contribute to this project please make sure to follow our guideli
 
 -   You need to use tabs for indentation.
 -   Explain your changes in the description of your pull request.
+-   You may build the package locally, but you don't have to commit it, as this is done automatically.
 
 Other than that, feel free to support neojax!
