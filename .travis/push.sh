@@ -7,7 +7,6 @@ setup_git() {
 }
 
 commit_website_files() {
-  npm run build
   git add *
   git commit --message "Travis build: $TRAVIS_BUILD_NUMBER"
 }
