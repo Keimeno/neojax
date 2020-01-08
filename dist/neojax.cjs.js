@@ -69,6 +69,125 @@ function __generator(thisArg, body) {
     }
 }
 
+var Util = /** @class */ (function () {
+    function Util() {
+    }
+    /**
+     * This is the function, that sends out every request.
+     *
+     * NeojaxOptions priority:
+     *  1. NeojaxOptions specified in every single request
+     *  2. NeojaxOptions set when creating a new instance through the create method
+     *  3. Defaultoptions specified in class
+     *
+     * @param url
+     * @param method
+     * @param data
+     * @param options
+     */
+    Util.sendRequest = function (url, method, data, defaultOptions, options) {
+        return __awaiter(this, void 0, Promise, function () {
+            var finalUrl, headers, init, response, resHeaders, _a;
+            return __generator(this, function (_b) {
+                switch (_b.label) {
+                    case 0:
+                        finalUrl = this.retrieveUrl(defaultOptions.baseUrl || '', (options || {}).baseUrl || '', url);
+                        headers = this.retrieveHeaders(defaultOptions.headers || {}, (options || {}).headers || {});
+                        init = {
+                            method: method,
+                            headers: __assign({}, headers)
+                        };
+                        if (data) {
+                            init.body = JSON.stringify(data);
+                        }
+                        return [4 /*yield*/, fetch(finalUrl, init)];
+                    case 1:
+                        response = _b.sent();
+                        resHeaders = Util.parseHeadersToNeojaxHeaders(response.headers);
+                        _a = {
+                            status: response.status,
+                            headers: resHeaders,
+                            url: response.url,
+                            success: response.ok,
+                            message: response.statusText
+                        };
+                        return [4 /*yield*/, this.retrieveData(response)];
+                    case 2: return [2 /*return*/, (_a.data = _b.sent(),
+                            _a)];
+                }
+            });
+        });
+    };
+    /**
+     * Parses fetch headers into useable NeojaxHeaders
+     *
+     * @param headers
+     */
+    Util.parseHeadersToNeojaxHeaders = function (headers) {
+        var newHeaders = {};
+        headers.forEach(function (value, name) {
+            newHeaders[name] = value;
+        });
+        return newHeaders;
+    };
+    /**
+     * retrieves the data from the response object
+     *
+     * @param response
+     */
+    Util.retrieveData = function (response) {
+        return __awaiter(this, void 0, Promise, function () {
+            var e_1, e_2;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        _a.trys.push([0, 2, , 7]);
+                        return [4 /*yield*/, response.json()];
+                    case 1: return [2 /*return*/, _a.sent()];
+                    case 2:
+                        e_1 = _a.sent();
+                        _a.label = 3;
+                    case 3:
+                        _a.trys.push([3, 5, , 6]);
+                        return [4 /*yield*/, response.text()];
+                    case 4: return [2 /*return*/, _a.sent()];
+                    case 5:
+                        e_2 = _a.sent();
+                        // return an empty string, so that users can check
+                        // if it's falsy or not.
+                        return [2 /*return*/, ''];
+                    case 6: return [3 /*break*/, 7];
+                    case 7: return [2 /*return*/];
+                }
+            });
+        });
+    };
+    /**
+     * retrieve the requested url.
+     * this depends on the options priority
+     *
+     * @param defaultUrl
+     * @param optionsUrl
+     * @param url
+     */
+    Util.retrieveUrl = function (defaultUrl, optionsUrl, url) {
+        if (optionsUrl)
+            return optionsUrl + url;
+        return defaultUrl + url;
+    };
+    /**
+     * returns the headers, that are set for this request
+     * this as well depends on the headers priority
+     *
+     * @param defaultHeaders
+     * @param optionsHeaders
+     */
+    Util.retrieveHeaders = function (defaultHeaders, optionsHeaders) {
+        return __assign(__assign({}, defaultHeaders), optionsHeaders);
+    };
+    return Util;
+}());
+
 /**
  * Neojax class
  */
@@ -100,82 +219,6 @@ var Neojax = /** @class */ (function () {
         return new Neojax(options);
     };
     /**
-     * This is the function, that sends out every request.
-     *
-     * NeojaxOptions priority:
-     *  1. NeojaxOptions specified in every single request
-     *  2. NeojaxOptions set when creating a new instance through the create method
-     *  3. Defaultoptions specified in class
-     *
-     * @param url
-     * @param method
-     * @param data
-     * @param options
-     */
-    Neojax.prototype.sendRequest = function (url, method, data, options) {
-        return __awaiter(this, void 0, Promise, function () {
-            var finalUrl, headers, init, response, body, e_1, err_1;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        finalUrl = url;
-                        headers = this._options.headers || {};
-                        if (this._options.baseUrl) {
-                            finalUrl = this._options.baseUrl + url;
-                        }
-                        if (options) {
-                            if (options.baseUrl) {
-                                finalUrl = options.baseUrl + url;
-                            }
-                            if (options.headers) {
-                                headers = __assign(__assign({}, headers), options.headers);
-                            }
-                        }
-                        init = {
-                            method: method,
-                            headers: __assign({}, headers)
-                        };
-                        if (data) {
-                            init.body = JSON.stringify(data);
-                        }
-                        return [4 /*yield*/, fetch(finalUrl, init)];
-                    case 1:
-                        response = _a.sent();
-                        headers = this.parseHeadersToNeojaxHeaders(response.headers);
-                        _a.label = 2;
-                    case 2:
-                        _a.trys.push([2, 4, , 9]);
-                        return [4 /*yield*/, response.json()];
-                    case 3:
-                        body = _a.sent();
-                        return [3 /*break*/, 9];
-                    case 4:
-                        e_1 = _a.sent();
-                        _a.label = 5;
-                    case 5:
-                        _a.trys.push([5, 7, , 8]);
-                        return [4 /*yield*/, response.text()];
-                    case 6:
-                        body = _a.sent();
-                        return [3 /*break*/, 8];
-                    case 7:
-                        err_1 = _a.sent();
-                        body = {};
-                        return [3 /*break*/, 8];
-                    case 8: return [3 /*break*/, 9];
-                    case 9: return [2 /*return*/, {
-                            status: response.status,
-                            headers: headers,
-                            url: response.url,
-                            success: response.ok,
-                            message: response.statusText,
-                            data: body
-                        }];
-                }
-            });
-        });
-    };
-    /**
      * Manages all incoming requests,
      * returns neojaxerror or neojaxresponse as promise
      *
@@ -193,7 +236,7 @@ var Neojax = /** @class */ (function () {
                         var response;
                         return __generator(this, function (_a) {
                             switch (_a.label) {
-                                case 0: return [4 /*yield*/, this.sendRequest(url, method, data, options)];
+                                case 0: return [4 /*yield*/, Util.sendRequest(url, method, data, this._options, options)];
                                 case 1:
                                     response = _a.sent();
                                     if (response.success) {
@@ -211,18 +254,6 @@ var Neojax = /** @class */ (function () {
                     }); })];
             });
         });
-    };
-    /**
-     * Parses fetch headers into useable NeojaxHeaders
-     *
-     * @param headers
-     */
-    Neojax.prototype.parseHeadersToNeojaxHeaders = function (headers) {
-        var newHeaders = {};
-        headers.forEach(function (value, name) {
-            newHeaders[name] = value;
-        });
-        return newHeaders;
     };
     /**
      * sends a get request
@@ -272,6 +303,12 @@ var Neojax = /** @class */ (function () {
          */
         get: function () {
             return this._options;
+        },
+        /**
+         * makes it possible to change options
+         */
+        set: function (options) {
+            this._options = options;
         },
         enumerable: true,
         configurable: true
