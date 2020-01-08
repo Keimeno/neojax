@@ -108,32 +108,6 @@ describe('Neojax entry tests', () => {
 		});
 	});
 
-	test('Can manage request', async () => {
-		const url = 'http://httpbin.org/get';
-		try {
-			const response = await Neojax['manageRequest']('GET', url);
-			expect(response).toMatchObject({
-				page: 1
-			});
-		} catch (error) {}
-	});
-
-	test('Can manage request receives 404', async () => {
-		const url = 'http://httpbin.org/get/wdaw';
-		try {
-			const response = await Neojax['manageRequest']('GET', url);
-			expect(response).toMatchObject({
-				page: 1
-			});
-		} catch (error) {
-			expect(error).toMatchObject({
-				response: {
-					status: 404
-				}
-			});
-		}
-	});
-
 	test('can set options after instance creation', () => {
 		const startUrl = 'test';
 		const newUrl = 'test1';
