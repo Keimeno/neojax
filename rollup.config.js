@@ -5,7 +5,7 @@ import { version, name } from './package.json';
 const input = './src/index.ts';
 const tsPlugin = typescript({ module: 'es2015' });
 const output = {
-	banner: `/* ${name} version ${version} Copyright (c) Keimeno\n   licensed under Apache-2.0 http://www.apache.org/licenses/LICENSE-2.0 */`,
+	banner: `/* ${name} version ${version} Copyright (c) Keimeno 2020\n   licensed under Apache-2.0 http://www.apache.org/licenses/LICENSE-2.0 */`,
 	name: 'neojax'
 };
 
@@ -40,8 +40,8 @@ export default [
 		external: ['unfetch/polyfill'],
 		output: Object.assign({}, output, {
 			exports: 'named',
-			file: 'dist/neojax.es.js',
-			format: 'esm'
+			file: 'dist/neojax.cjs.js',
+			format: 'cjs'
 		})
 	}
 ];
