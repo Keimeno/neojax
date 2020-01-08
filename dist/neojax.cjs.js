@@ -1,6 +1,10 @@
 /* neojax version 2.1.7 Copyright (c) Keimeno
    licensed under Apache-2.0 http://www.apache.org/licenses/LICENSE-2.0 */
-import 'unfetch/polyfill';
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+require('unfetch/polyfill');
 
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
@@ -286,4 +290,4 @@ var Neojax = /** @class */ (function () {
 }());
 var index = new Neojax();
 
-export default index;
+exports.default = index;

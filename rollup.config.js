@@ -40,8 +40,8 @@ export default [
 		external: ['unfetch/polyfill'],
 		output: Object.assign({}, output, {
 			exports: 'named',
-			file: 'dist/neojax.es.js',
-			format: 'esm'
+			file: 'dist/neojax.cjs.js',
+			format: 'cjs'
 		})
 	}
 ];

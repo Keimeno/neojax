@@ -3,7 +3,7 @@
 	"version": "2.1.7",
 	"author": "Keimeno",
 	"description": "neojax is a lightweight alternative to axios, with native typescript support.",
-	"main": "./dist/neojax.es.js",
+	"main": "./dist/neojax.cjs.js",
 	"browser": "./dist/neojax.umd.js",
 	"types": "./types/index.d.ts",
 	"scripts": {
