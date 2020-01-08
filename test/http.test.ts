@@ -11,7 +11,7 @@ describe('http request tests', () => {
 			res.status(200).json({ page: 1 });
 		});
 
-		http.createServer(router).listen(4444);
+		const server = http.createServer(router).listen(4444);
 
 		const url = 'http://localhost:4444/';
 		try {
@@ -20,6 +20,8 @@ describe('http request tests', () => {
 				page: 1
 			});
 		} catch (error) {}
+
+		server.close();
 	});
 
 	test('get request 404', async () => {
@@ -29,7 +31,7 @@ describe('http request tests', () => {
 			res.status(404).json({ page: 1 });
 		});
 
-		http.createServer(router).listen(3000);
+		const server = http.createServer(router).listen(3000);
 
 		const url = 'http://localhost:3000/';
 		try {
@@ -42,5 +44,7 @@ describe('http request tests', () => {
 				}
 			});
 		}
+
+		server.close();
 	});
 });
