@@ -1,17 +1,7 @@
 import nodefetch, { Response } from 'node-fetch';
 import Util from '../src/util';
-import { NeojaxConvolutedResponse } from '../types/response';
 
 describe('utility tests', () => {
-	test('direct request working', () => {
-		const url = 'https://api.kanye.rest/';
-		Util.sendRequest(url, 'GET', null, {}, {}).then(
-			(res: NeojaxConvolutedResponse) => {
-				expect(res).toMatchObject({ status: 200, url });
-			}
-		);
-	});
-
 	test('parse headers to neojax headers', () => {
 		// entered a fake Headers object
 		const headers = Util['parseHeadersToNeojaxHeaders']({
