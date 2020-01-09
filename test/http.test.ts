@@ -3,48 +3,44 @@ import cors from 'cors';
 import Neojax from '../src';
 import express, { Request, Response } from 'express';
 
+const router = express();
+let server: http.Server;
+
 describe('http request tests', () => {
-	test('get request 200', async () => {
-		const router = express();
+	beforeAll(() => {
 		router.use(cors({ origin: '*' }));
-		router.get('/', (req: Request, res: Response) => {
-			res.status(200).json({ page: 1 });
+		router.get('/:status', (req: Request, res: Response) => {
+			res.status(+req.params.status).json({package: +req.params.status});
 		});
 
-		const server = http.createServer(router).listen(4444);
+		server = http.createServer(router).listen(3000);
+	})
 
-		const url = 'http://localhost:4444/';
+	afterAll(() => {
+		server.close();
+	})
+
+	test('get request 200', async () => {
+		const url = 'http://localhost:3000/200';
 		try {
 			const response = await Neojax['manageRequest']('GET', url);
 			expect(response).toMatchObject({
-				page: 1
+				status: 200
 			});
 		} catch (error) {}
-
-		server.close();
 	});
 
-	test('get request 404', async () => {
-		const router = express();
-		router.use(cors({ origin: '*' }));
-		router.get('/', (req: Request, res: Response) => {
-			res.status(404).json({ page: 1 });
-		});
-
-		const server = http.createServer(router).listen(3000);
-
-		const url = 'http://localhost:3000/';
+	test('get request 400', async () => {
+		const url = 'http://localhost:3000/400';
 		try {
 			const response = await Neojax['manageRequest']('GET', url);
 			response;
 		} catch (error) {
 			expect(error).toMatchObject({
 				response: {
-					status: 404
+					status: 400
 				}
 			});
 		}
-
-		server.close();
 	});
 });
